@@ -22,16 +22,40 @@
     "footerCode": ""
   },
   "contactLinks": [],
-  "copyrightText": "© {year} Commercial Daily News. All rights reserved.",
+  "copyrightText": "© {year} Commercial Daily News. All rights reserved. PUBLISHER_GATE_config_1792624966502",
   "legalLinks": [
-    { "label": "Editorial Guidelines", "href": "/editorial-guidelines/" },
-    { "label": "Privacy", "href": "/privacy-policy/" },
-    { "label": "Terms", "href": "/terms-of-use/" },
-    { "label": "Cookies", "href": "/cookie-policy/" },
-    { "label": "AI", "href": "/ai-policy/" },
-    { "label": "DMCA", "href": "/dmca-policy/" },
-    { "label": "Sponsored", "href": "/sponsored-content-policy/" },
-    { "label": "Sitemap", "href": "/sitemap/" }
+    {
+      "label": "Editorial Guidelines",
+      "href": "/editorial-guidelines/"
+    },
+    {
+      "label": "Privacy",
+      "href": "/privacy-policy/"
+    },
+    {
+      "label": "Terms",
+      "href": "/terms-of-use/"
+    },
+    {
+      "label": "Cookies",
+      "href": "/cookie-policy/"
+    },
+    {
+      "label": "AI",
+      "href": "/ai-policy/"
+    },
+    {
+      "label": "DMCA",
+      "href": "/dmca-policy/"
+    },
+    {
+      "label": "Sponsored",
+      "href": "/sponsored-content-policy/"
+    },
+    {
+      "label": "Sitemap",
+      "href": "/sitemap/"
+    }
   ],
   "footerStarfield": false
 }
