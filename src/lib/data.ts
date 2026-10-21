@@ -212,7 +212,7 @@ function tinaDirectContentApiUrl() {
 }
 
 function tinaApiToken() {
-	return import.meta.env.TINA_TOKEN || process.env.TINA_TOKEN || '';
+	return process.env.TINA_TOKEN || '';
 }
 
 
