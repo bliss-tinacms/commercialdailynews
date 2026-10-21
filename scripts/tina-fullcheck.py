@@ -28,6 +28,11 @@ if not CLIENT_ID or not TOKEN:
 
 TINA_URL = f"https://content.tinajs.io/2.4/content/{CLIENT_ID}/github/{BRANCH}"
 REQUIRED = {"blog", "page", "category", "user", "navigation", "config"}
+TEST_OMIT = os.environ.get("TINA_FULLCHECK_TEST_OMIT", "").strip()
+if TEST_OMIT:
+    if TEST_OMIT not in REQUIRED:
+        raise SystemExit(f"TINA-FULLCHECK TEST ERROR: unknown omitted collection {TEST_OMIT!r}")
+    REQUIRED = REQUIRED - {TEST_OMIT}
 SEO_FIELDS = "metaTitle metaDescription ogTitle ogDescription ogImage canonicalUrl noindex nofollow"
 
 
@@ -71,11 +76,11 @@ def configured_collections() -> set[str]:
 def query_backend() -> dict:
     query = f"""
     query AllCollectionFullcheck {{
-      blog(relativePath: "hca-warns-that-lost-health-coverage-is-increasing-pressure-on-hospitals.mdx") {{ title description seo {{ {SEO_FIELDS} }} _sys {{ filename }} }}
+      blog(relativePath: "why-a-new-warehouse-can-change-a-whole-neighborhood.mdx") {{ title description seo {{ {SEO_FIELDS} }} _sys {{ filename }} }}
       blogs: blogConnection(first: 100) {{ edges {{ node {{ categories }} }} }}
       page(relativePath: "home.mdx") {{ title seo {{ {SEO_FIELDS} }} _sys {{ filename }} }}
-      category(relativePath: "Business.json") {{ title description seo {{ {SEO_FIELDS} }} _sys {{ filename }} }}
-      user(relativePath: "admin.json") {{ name role bio seo {{ {SEO_FIELDS} }} _sys {{ filename }} }}
+      category(relativePath: "featured.json") {{ title description seo {{ {SEO_FIELDS} }} _sys {{ filename }} }}
+      user(relativePath: "richard-sheppard.json") {{ name role bio seo {{ {SEO_FIELDS} }} _sys {{ filename }} }}
       navigation(relativePath: "header.json") {{ title items {{ label href children {{ label href }} }} _sys {{ filename }} }}
       config(relativePath: "config.json") {{
         headerNavigation {{ ... on Navigation {{ _sys {{ relativePath }} }} }}
@@ -84,6 +89,7 @@ def query_backend() -> dict:
         contactForm {{ heading description buttonText note subject formspreeEndpoint }}
         codeInjection {{ headerCode footerCode }}
         contactLinks {{ title link icon }}
+        copyrightText
         footerStarfield
         _sys {{ filename }}
       }}
@@ -140,32 +146,41 @@ def main() -> int:
     configured = configured_collections()
     if configured != REQUIRED:
         failures.append(f"collection coverage mismatch: configured={sorted(configured)}, explicitly checked={sorted(REQUIRED)}")
+        print(json.dumps({
+            "site": SITE,
+            "configuredCollections": sorted(configured),
+            "requiredCollections": sorted(REQUIRED),
+            "coverageComplete": False,
+            "failures": failures,
+        }, ensure_ascii=False, indent=2))
+        print("TINA_FULLCHECK_OK False")
+        return 1
     data = query_backend()
     for name in sorted(REQUIRED):
         if not data.get(name): failures.append(f"{name}: Tina query returned no document")
 
     routes = {
         "page": fetch_route("/"),
-        "blog": fetch_route("/hca-warns-that-lost-health-coverage-is-increasing-pressure-on-hospitals/"),
-        "category": fetch_route("/business/"),
-        "user": fetch_route("/author/admin/"),
+        "blog": fetch_route("/why-a-new-warehouse-can-change-a-whole-neighborhood/"),
+        "category": fetch_route("/category/featured/"),
+        "user": fetch_route("/author/richard-sheppard/"),
     }
     config, page, blog, category, user = data["config"], data["page"], data["blog"], data["category"], data["user"]
     site_title = config.get("seo", {}).get("title") or "Starter Site"
-    business_post_count = sum(
+    category_post_count = sum(
         1 for edge in (data.get("blogs", {}).get("edges") or [])
-        if any(str(value).replace("\\", "/").lower().endswith("/business.json") for value in ((edge.get("node") or {}).get("categories") or []))
+        if any(str(value).replace("\\", "/").lower().endswith("/featured.json") for value in ((edge.get("node") or {}).get("categories") or []))
     )
     category_description = category.get("description") or (
-        f"Read the latest {category.get('title')} articles from Starter Site."
-        if business_post_count else
-        f"Articles in the {category.get('title')} category will be published soon on Starter Site."
+        f"Read the latest {category.get('title')} articles from {site_title}."
+        if category_post_count else
+        f"Articles in the {category.get('title')} category will be published soon on {site_title}."
     )
     seo_results = {
         "page": assert_seo("page", routes["page"], page.get("seo"), page.get("title") or site_title, config.get("seo", {}).get("description") or "", f"{SITE}/", failures),
-        "blog": assert_seo("blog", routes["blog"], blog.get("seo"), blog.get("title") or "", blog.get("description") or "", "/hca-warns-that-lost-health-coverage-is-increasing-pressure-on-hospitals/", failures),
-        "category": assert_seo("category", routes["category"], category.get("seo"), f"{category.get('title')} Articles | {site_title}", category_description, "/business/", failures),
-        "user": assert_seo("user", routes["user"], user.get("seo"), f"{user.get('name')} Articles | {site_title}", user.get("bio") or f"Read the latest articles by {user.get('name')} from Starter Site.", "/author/admin/", failures),
+        "blog": assert_seo("blog", routes["blog"], blog.get("seo"), blog.get("title") or "", blog.get("description") or "", "/why-a-new-warehouse-can-change-a-whole-neighborhood/", failures),
+        "category": assert_seo("category", routes["category"], category.get("seo"), f"{category.get('title')} Articles | {site_title}", category_description, "/category/featured/", failures),
+        "user": assert_seo("user", routes["user"], user.get("seo"), f"{user.get('name')} Articles | {site_title}", user.get("bio") or f"Read the latest articles by {user.get('name')} from {site_title}.", "/author/richard-sheppard/", failures),
     }
     assert_text("blog.title", routes["blog"]["html"], blog.get("title") or "", failures)
     assert_text("category.title", routes["category"]["html"], category.get("title") or "", failures)
@@ -173,6 +188,7 @@ def main() -> int:
     assert_text("user.role", routes["user"]["html"], user.get("role") or "", failures)
     assert_text("navigation.items[0].label", routes["page"]["html"], data["navigation"]["items"][0]["label"], failures)
     assert_text("config.seo.title", routes["page"]["html"], config.get("seo", {}).get("title") or "", failures)
+    assert_text("config.copyrightText", routes["page"]["html"], (config.get("copyrightText") or "").replace("{year}", str(time.localtime().tm_year)), failures)
     config_logo = config.get("seo", {}).get("logo") or ""
     if config_logo:
         assert_text("config.seo.logo", routes["page"]["html"], config_logo, failures)
