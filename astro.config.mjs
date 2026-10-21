@@ -93,8 +93,12 @@ export default defineConfig({
 		// `import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro'`
 		// triggers a full Vite resolve + Astro-plugin compile of the
 		// package's source `.astro` files on the first request.
+		// Bundle source-only render dependencies that are not provided by the
+		// shared CloudLinux Node runtime. Cheerio is used by the immutable demo
+		// renderers on every request and must not be resolved from a host-global
+		// package tree.
 		ssr: {
-			noExternal: ['@tinacms/astro', '@tinacms/bridge'],
+			noExternal: ['@tinacms/astro', '@tinacms/bridge', 'cheerio'],
 		},
 		build: {
 			rollupOptions: {
