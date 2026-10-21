@@ -3,6 +3,9 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const applicationRoot = dirname(fileURLToPath(import.meta.url));
+// Passenger may launch Node from the Apache document root rather than the app root.
+// Runtime authority templates resolve from process.cwd(), so pin cwd to this release.
+process.chdir(applicationRoot);
 const explicitEnv = String(process.env.SITE_ENV_FILE || '').trim();
 if (explicitEnv && !existsSync(resolve(explicitEnv))) {
   throw new Error(`SITE_ENV_FILE does not exist: ${explicitEnv}`);
