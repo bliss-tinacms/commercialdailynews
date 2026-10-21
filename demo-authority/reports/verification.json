@@ -1,0 +1,91 @@
+{
+  "authority_root": "/home/aaisha/workspaces/commercialdailynews-demo-authority",
+  "regular_files_excluding_manifest": 97,
+  "expected_counts": {
+    "bundles": 9,
+    "rendered": 9,
+    "screenshots": 18,
+    "assets": 33
+  },
+  "missing_required_files": [],
+  "symlinks": [],
+  "resolved_outside_root": [],
+  "duplicate_content_groups": {},
+  "bad_hash_named_assets": [],
+  "rendered_files_with_transient_blob_or_data_refs": 0,
+  "screenshot_dimensions": {
+    "screenshots/404-desktop-1440x1000.png": [
+      1440,
+      1195
+    ],
+    "screenshots/404-mobile-390x844.png": [
+      390,
+      1101
+    ],
+    "screenshots/about-desktop-1440x1000.png": [
+      1440,
+      4321
+    ],
+    "screenshots/about-mobile-390x844.png": [
+      390,
+      6344
+    ],
+    "screenshots/article-desktop-1440x1000.png": [
+      1440,
+      3285
+    ],
+    "screenshots/article-mobile-390x844.png": [
+      390,
+      5292
+    ],
+    "screenshots/author-desktop-1440x1000.png": [
+      1440,
+      2358
+    ],
+    "screenshots/author-mobile-390x844.png": [
+      390,
+      4301
+    ],
+    "screenshots/category-desktop-1440x1000.png": [
+      1440,
+      2259
+    ],
+    "screenshots/category-mobile-390x844.png": [
+      390,
+      3966
+    ],
+    "screenshots/contact-desktop-1440x1000.png": [
+      1440,
+      2186
+    ],
+    "screenshots/contact-mobile-390x844.png": [
+      390,
+      3742
+    ],
+    "screenshots/index-desktop-1440x1000.png": [
+      1440,
+      5720
+    ],
+    "screenshots/index-mobile-390x844.png": [
+      390,
+      8380
+    ],
+    "screenshots/page-desktop-1440x1000.png": [
+      1440,
+      2512
+    ],
+    "screenshots/page-mobile-390x844.png": [
+      390,
+      4158
+    ],
+    "screenshots/team-desktop-1440x1000.png": [
+      1440,
+      2342
+    ],
+    "screenshots/team-mobile-390x844.png": [
+      390,
+      4243
+    ]
+  },
+  "passed": true
+}

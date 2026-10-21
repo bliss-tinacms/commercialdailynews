@@ -1,0 +1,58 @@
+[
+  {
+    "page": "index",
+    "mime": "image/jpeg",
+    "size": 160535,
+    "sha256": "0cccf74766485af38c2d1cad4a40a539af64c3138864999308cedcdf7cbb7df7",
+    "file": "assets/0cccf74766485af38c2d1cad4a40a539af64c3138864999308cedcdf7cbb7df7.jpg",
+    "source": "runtime data URL hashed while live; persisted from unpacked DOM"
+  },
+  {
+    "page": "index",
+    "mime": "image/jpeg",
+    "size": 132035,
+    "sha256": "2d02dfaa49febf8573c3dfac3e15d6fbaf2e2d8c90cd36df6f82fc3910a2996b",
+    "file": "assets/2d02dfaa49febf8573c3dfac3e15d6fbaf2e2d8c90cd36df6f82fc3910a2996b.jpg",
+    "source": "runtime data URL hashed while live; persisted from unpacked DOM"
+  },
+  {
+    "page": "index",
+    "mime": "image/jpeg",
+    "size": 105949,
+    "sha256": "3b85da78e320dd909dcb8f224d839c3dcd0189c72ed44b5443b4fb97b692c599",
+    "file": "assets/3b85da78e320dd909dcb8f224d839c3dcd0189c72ed44b5443b4fb97b692c599.jpg",
+    "source": "runtime data URL hashed while live; persisted from unpacked DOM"
+  },
+  {
+    "page": "index",
+    "mime": "image/jpeg",
+    "size": 57141,
+    "sha256": "6da808245538c93a9bafc15846d66bb9059fad6751417f0bfee5e7ccc7e5d622",
+    "file": "assets/6da808245538c93a9bafc15846d66bb9059fad6751417f0bfee5e7ccc7e5d622.jpg",
+    "source": "runtime data URL hashed while live; persisted from unpacked DOM"
+  },
+  {
+    "page": "index",
+    "mime": "image/jpeg",
+    "size": 62806,
+    "sha256": "92e84dbfef4e4283635623d2d6cef7309bf6eff5305258f931693075a0e6f104",
+    "file": "assets/92e84dbfef4e4283635623d2d6cef7309bf6eff5305258f931693075a0e6f104.jpg",
+    "source": "runtime data URL hashed while live; persisted from unpacked DOM"
+  },
+  {
+    "page": "index",
+    "mime": "image/jpeg",
+    "size": 152722,
+    "sha256": "9b5abe3529506177c19bd2c1dd019f99ac1f364070d9a2603734e610c218a16d",
+    "file": "assets/9b5abe3529506177c19bd2c1dd019f99ac1f364070d9a2603734e610c218a16d.jpg",
+    "source": "runtime data URL hashed while live; persisted from unpacked DOM"
+  },
+  {
+    "page": "index",
+    "mime": "image/jpeg",
+    "size": 153582,
+    "sha256": "df89e54d81799c8e3718ff774e3f586320b82460d8af02f795fd15f58281786f",
+    "file": "assets/df89e54d81799c8e3718ff774e3f586320b82460d8af02f795fd15f58281786f.jpg",
+    "source": "runtime data URL hashed while live; persisted from unpacked DOM"
+  }
+]

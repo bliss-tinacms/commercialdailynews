@@ -1,0 +1,96 @@
+---
+import { getBlogPermalink, getBlogRouteSlug, getPageRouteSlug } from '../lib/permalinks';
+import { getBlog, getGlobalChrome, getPublicPage, getUser, listBlogs, listCategories, listPages, listUsers } from '../lib/data';
+import { referenceSlug, renderAuthority } from '../lib/demo-authority';
+import { mutateAbout, mutateArticle, mutateContact, mutateGenericPage, mutateTeam, sortNewsroom } from '../lib/commercial-renderers';
+
+export const prerender = false;
+const routeSlug = String(Astro.params.slug || '').toLowerCase().replace(/^\/+|\/+$/g, '');
+if (routeSlug === 'our-team') return Astro.redirect('/team/', 301);
+if (routeSlug === 'business' || routeSlug === 'business-economy') return Astro.redirect('/category/business-economy/', 301);
+
+const chrome = await getGlobalChrome();
+const config: any = chrome.config;
+const pages = await listPages();
+const pageMatch: any = pages.find((page: any) => getPageRouteSlug(page) === routeSlug || page?._sys?.filename === routeSlug);
+
+if (pageMatch) {
+  const data: any = (await getPublicPage(pageMatch._sys.filename)).data?.page;
+  if (data) {
+    const seo = data.seo || {};
+    const canonical = `/${routeSlug}/`;
+    const family = routeSlug === 'about' ? 'about' : routeSlug === 'team' ? 'team' : routeSlug === 'contact' ? 'contact' : 'page';
+    const users = family === 'team' ? sortNewsroom(await listUsers()) : [];
+    return renderAuthority({
+      family,
+      chrome,
+      seo: {
+        title: seo.metaTitle || `${data.title} | Commercial Daily News`,
+        description: seo.metaDescription || data.demoIntroduction || config?.seo?.description || '',
+        canonical: seo.canonicalUrl || canonical,
+        image: seo.ogImage,
+        ogTitle: seo.ogTitle,
+        ogDescription: seo.ogDescription,
+        noindex: seo.noindex,
+        nofollow: seo.nofollow,
+      },
+      mutate: ($) => {
+        if (family === 'about') mutateAbout($, data);
+        else if (family === 'team') mutateTeam($, data, users);
+        else if (family === 'contact') mutateContact($, data, config);
+        else mutateGenericPage($, data);
+      },
+    });
+  }
+}
+
+const posts = await listBlogs();
+const postMatch: any = posts.find((post: any) => getBlogRouteSlug(post) === routeSlug || post?._sys?.filename === routeSlug);
+if (postMatch) {
+  const data: any = (await getBlog(postMatch._sys.filename)).data?.blog;
+  if (data) {
+    const canonical = getBlogPermalink(data) + '/';
+    if (canonical !== `/${routeSlug}/`) return Astro.redirect(canonical, 301);
+    const authorSlug = referenceSlug(data.author);
+    const user: any = authorSlug ? (await getUser(authorSlug)).data?.user || (typeof data.author === 'object' ? data.author : null) : null;
+    const categoryDocuments: any[] = await listCategories();
+    data.categories = (Array.isArray(data.categories) ? data.categories : [data.categories])
+      .filter(Boolean)
+      .map((category: any) => categoryDocuments.find((candidate: any) => referenceSlug(candidate) === referenceSlug(category)) || category);
+    const seo = data.seo || {};
+    const related = posts.filter((candidate: any) => candidate?._sys?.filename !== data?._sys?.filename && candidate?.permalink !== data?.permalink).slice(0, 3);
+    return renderAuthority({
+      family: 'article',
+      chrome,
+      seo: {
+        title: seo.metaTitle || `${data.title} | Commercial Daily News`,
+        description: seo.metaDescription || data.description || '',
+        canonical: seo.canonicalUrl || canonical,
+        image: seo.ogImage || data.heroImage,
+        ogTitle: seo.ogTitle,
+        ogDescription: seo.ogDescription,
+        noindex: seo.noindex,
+        nofollow: seo.nofollow,
+        type: 'article',
+      },
+      mutate: ($) => mutateArticle($, data, user, related),
+    });
+  }
+}
+
+Astro.response.status = 404;
+return renderAuthority({
+  family: '404',
+  chrome,
+  status: 404,
+  mutate: ($) => {
+    $('[data-dc-tpl="49"]').attr('href', '/category/featured/');
+  },
+  seo: {
+    title: 'Page Not Found | Commercial Daily News',
+    description: 'The page you are looking for may have moved, or the link may be out of date.',
+    canonical: `/${routeSlug}/`,
+    noindex: true,
+  },
+});
+---

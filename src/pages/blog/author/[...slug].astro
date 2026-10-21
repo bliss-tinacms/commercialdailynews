@@ -1,0 +1,5 @@
+---
+export const prerender = false;
+const slug = String(Astro.params.slug || '').replace(/^\/+|\/+$/g, '');
+return Astro.redirect(`/author/${slug}/`, 301);
+---

@@ -1,0 +1,991 @@
+{
+  "title": "",
+  "url": "/category/business-economy/",
+  "lang": "",
+  "html_classes": [],
+  "body_id": null,
+  "body_classes": [],
+  "dom_root": {
+    "tag": "div",
+    "id": "dc-root",
+    "classes": [],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured Business & Economy LATEST Why a new warehouse can change a whole neighborhood Jobs, traffic, and rents a"
+  },
+  "dom_root_child": {
+    "tag": "div",
+    "id": null,
+    "classes": [
+      "sc-host"
+    ],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured Business & Economy LATEST Why a new warehouse can change a whole neighborhood Jobs, traffic, and rents a"
+  },
+  "headings": [
+    {
+      "tag": "h1",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Business & Economy"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Public Sans",
+      "count": 100
+    },
+    {
+      "name": "sans-serif",
+      "count": 100
+    },
+    {
+      "name": "Times New Roman",
+      "count": 19
+    },
+    {
+      "name": "Newsreader",
+      "count": 8
+    },
+    {
+      "name": "serif",
+      "count": 8
+    }
+  ],
+  "loaded_fonts": [
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "loaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "loaded"
+    }
+  ],
+  "colors": [
+    {
+      "value": "rgb(255, 255, 255)",
+      "count": 52
+    },
+    {
+      "value": "rgb(27, 36, 51)",
+      "count": 47
+    },
+    {
+      "value": "rgb(14, 31, 61)",
+      "count": 44
+    },
+    {
+      "value": "rgb(107, 117, 134)",
+      "count": 42
+    },
+    {
+      "value": "rgb(0, 0, 0)",
+      "count": 38
+    },
+    {
+      "value": "rgb(194, 202, 215)",
+      "count": 29
+    },
+    {
+      "value": "rgb(232, 178, 58)",
+      "count": 9
+    },
+    {
+      "value": "rgb(244, 245, 247)",
+      "count": 2
+    },
+    {
+      "value": "rgb(138, 106, 18)",
+      "count": 2
+    },
+    {
+      "value": "rgb(74, 85, 104)",
+      "count": 2
+    },
+    {
+      "value": "rgba(14, 31, 61, 0.15)",
+      "count": 2
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.12)",
+      "count": 1
+    }
+  ],
+  "radii": [
+    {
+      "value": "50%",
+      "count": 28
+    }
+  ],
+  "breakpoints": [
+    "print"
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 1000,
+    "device_pixel_ratio": 1
+  },
+  "document_dimensions": {
+    "width": 1440,
+    "height": 2259
+  },
+  "content": {
+    "main_count": 0,
+    "main_rect": null,
+    "max_width_values": [
+      "1320px",
+      "100%",
+      "1280px"
+    ]
+  },
+  "section_order": [
+    {
+      "order": 1,
+      "tag": "header",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured",
+      "heading": null
+    },
+    {
+      "order": 2,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Business & Economy",
+      "heading": "Business & Economy"
+    },
+    {
+      "order": 3,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "LATEST Why a new warehouse can change a whole neighborhood Jobs, traffic, and rents all move when a large employer arrives. Patricia Waters Oct 15, 2026",
+      "heading": null
+    },
+    {
+      "order": 4,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Why small retailers are rethinking holiday hiring Patricia Waters Oct 13, 2026 What higher shipping costs mean for online shoppers Jerry Barnes Oct 11, 2026 The farmers market boom",
+      "heading": null
+    },
+    {
+      "order": 5,
+      "tag": "footer",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap",
+      "heading": null
+    }
+  ],
+  "header": {
+    "tag": "header",
+    "id": null,
+    "classes": [],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured",
+    "children": [
+      {
+        "tag": "div",
+        "id": null,
+        "classes": [],
+        "role": null,
+        "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured"
+      }
+    ],
+    "links": [
+      {
+        "text": "U.S. News",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "World News",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Business",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Science",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "",
+        "href": "/",
+        "aria": null
+      },
+      {
+        "text": "Lifestyle",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Health",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Real Estate",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Featured",
+        "href": "#",
+        "aria": null
+      }
+    ]
+  },
+  "footer": {
+    "tag": "footer",
+    "id": null,
+    "classes": [],
+    "role": null,
+    "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap",
+    "children": [
+      {
+        "tag": "div",
+        "id": null,
+        "classes": [],
+        "role": null,
+        "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap"
+      }
+    ],
+    "links": [
+      {
+        "text": "",
+        "href": "/",
+        "aria": null
+      },
+      {
+        "text": "Home",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "About Us",
+        "href": "/about/",
+        "aria": null
+      },
+      {
+        "text": "Our Team",
+        "href": "/our-team/",
+        "aria": null
+      },
+      {
+        "text": "Contact Us",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Blog",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Write for Us",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Editorial Guidelines",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Privacy",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Terms",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Cookies",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "AI",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "DMCA",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Sponsored",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Sitemap",
+        "href": "#",
+        "aria": null
+      }
+    ]
+  },
+  "scripts": [
+    {
+      "type": "text/javascript",
+      "async": true,
+      "defer": false,
+      "text_length": 287,
+      "asset": null
+    },
+    {
+      "type": "text/javascript",
+      "async": true,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe.js",
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"
+    },
+    {
+      "type": "text/javascript",
+      "async": false,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd.js",
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    },
+    {
+      "type": "text/javascript",
+      "async": false,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d.js",
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    },
+    {
+      "type": "text/x-dc",
+      "async": true,
+      "defer": false,
+      "text_length": 3640,
+      "asset": null
+    }
+  ],
+  "interactions": [
+    {
+      "tag": "a",
+      "type": null,
+      "text": "U.S. News",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "World News",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Business",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Science",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "",
+      "href": "/",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Lifestyle",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Health",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Real Estate",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Featured",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "LATEST Why a new warehouse can change a whole neighborhood Jobs, traffic, and rents all move when a large employer arrives. Patricia Waters ",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Why small retailers are rethinking holiday hiring Patricia Waters Oct 13, 2026",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "What higher shipping costs mean for online shoppers Jerry Barnes Oct 11, 2026",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "The farmers market boom, explained Teresa Fletcher Oct 9, 2026",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Office leases are shrinking. Here is where the space is going Patricia Waters Oct 7, 2026",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "How rising insurance premiums are reshaping household budgets Patricia Waters Oct 4, 2026",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Why manufacturers are building factories closer to home Jerry Barnes Oct 2, 2026",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "1",
+      "href": "#",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "2",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "3",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Next \u2192",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp4"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "",
+      "href": "/",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Home",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "About Us",
+      "href": "/about/",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Our Team",
+      "href": "/our-team/",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Contact Us",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Blog",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Write for Us",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Editorial Guidelines",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Privacy",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Terms",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Cookies",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "AI",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "DMCA",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Sponsored",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Sitemap",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    }
+  ],
+  "blob_records": [
+    {
+      "mime": "image/jpeg",
+      "size": 65886,
+      "sha256": "ba6d82b6761ab79fc5c116426e186d74b62cf1ac169fd78b5623a26792d5dc47"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 58084,
+      "sha256": "e20db23a4810a921938de046575132f5f7de4967466d87e795765eb89a817fe0"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 65430,
+      "sha256": "8a434c13512e7691a7e5017aebe73065a469393a1ce40446e7eb0068587307b3"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 164172,
+      "sha256": "fba22f4872a1fa2cfb1e0c9f0ed36fd705c8db8e85c6bd4c5ab057befe3a77f6"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 70626,
+      "sha256": "00f6918cf8aa4dff9a433e6e915501aef0eb32b34c7d2fbd8e30bd8a1037bd6d"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 58291,
+      "sha256": "e8cf8f5f7be3599cfb950b496835f47a4db6d9a4a6db0c9e87466ae655aae447"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 93708,
+      "sha256": "1fc3d6f8e79357855b1b1ef067a047c2f42a01b022b27df4724fd178b52687e4"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 132035,
+      "sha256": "2d02dfaa49febf8573c3dfac3e15d6fbaf2e2d8c90cd36df6f82fc3910a2996b"
+    },
+    {
+      "mime": "image/png",
+      "size": 165295,
+      "sha256": "1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 152722,
+      "sha256": "9b5abe3529506177c19bd2c1dd019f99ac1f364070d9a2603734e610c218a16d"
+    },
+    {
+      "mime": "image/png",
+      "size": 3297957,
+      "sha256": "a2c53f07fd3d9de9523e6289016a3b7957cef183082a18394f321439d71138ce"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 69150,
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 10751,
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 131835,
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    }
+  ],
+  "data_records": [
+    {
+      "mime": "font/woff2",
+      "size": 12716,
+      "sha256": "47d6b14e8485a0e9fbdb1da54f08cbb6a44ab9e6bf0e87910cbe57c9d39cf589"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 41296,
+      "sha256": "512461782bfeca8def39178447b4c8cd456a8157f9d0baf7bab4704fb0403b16"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 67240,
+      "sha256": "70af92011000db37e9c152ebfec26450a2a1d592c8166417539356e64f1776a5"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 27248,
+      "sha256": "6d0543f06b9d5393afe5baaeb040817e85af372bf5609d5d55746b1eb56b4010"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 86608,
+      "sha256": "45683de03de37187604102316c0b42c0cb2d8dc9c4140a20ad471c3148cc1278"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 132000,
+      "sha256": "6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 7716,
+      "sha256": "94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 18472,
+      "sha256": "3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 26832,
+      "sha256": "5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68"
+    }
+  ],
+  "route": "/category/business-economy/",
+  "http_status": 200,
+  "console_messages": [],
+  "page_errors": [],
+  "request_failures": [],
+  "runtime_replacements": 23
+}

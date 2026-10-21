@@ -1,0 +1,149 @@
+{
+  "key": "404",
+  "bundle": "bundles/404.html",
+  "bundle_sha256": "b1363c13237d16ea1a102c7ce3b6b3639935e102959b4479582d566e1bd03cca",
+  "asset_count": 13,
+  "assets": [
+    {
+      "uuid": "59476d83-e070-4092-bd18-2e6667f4a4c9",
+      "mime": "image/png",
+      "compressed": false,
+      "encoded_size": 165295,
+      "size": 165295,
+      "sha256": "1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f",
+      "file": "assets/1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f.png",
+      "nested_page": false
+    },
+    {
+      "uuid": "cae3a4d0-0bb5-4647-872c-3503a6bf7bb0",
+      "mime": "text/javascript",
+      "compressed": true,
+      "encoded_size": 19109,
+      "size": 69150,
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe",
+      "file": "assets/8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe.js",
+      "nested_page": false
+    },
+    {
+      "uuid": "9608c7d6-f69b-4808-ac07-a3636ba2f93d",
+      "mime": "text/javascript",
+      "compressed": true,
+      "encoded_size": 4269,
+      "size": 10751,
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd",
+      "file": "assets/d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd.js",
+      "nested_page": false
+    },
+    {
+      "uuid": "95963386-bc97-483d-8f8b-38780cb1205f",
+      "mime": "text/javascript",
+      "compressed": true,
+      "encoded_size": 43121,
+      "size": 131835,
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d",
+      "file": "assets/35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d.js",
+      "nested_page": false
+    },
+    {
+      "uuid": "21ba2794-a905-4e47-950d-d88c452a0820",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 12716,
+      "size": 12716,
+      "sha256": "47d6b14e8485a0e9fbdb1da54f08cbb6a44ab9e6bf0e87910cbe57c9d39cf589",
+      "file": "assets/47d6b14e8485a0e9fbdb1da54f08cbb6a44ab9e6bf0e87910cbe57c9d39cf589.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "ad521c5b-f76b-4085-b588-e4940f94e99e",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 41296,
+      "size": 41296,
+      "sha256": "512461782bfeca8def39178447b4c8cd456a8157f9d0baf7bab4704fb0403b16",
+      "file": "assets/512461782bfeca8def39178447b4c8cd456a8157f9d0baf7bab4704fb0403b16.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "26014d96-cd4d-4414-8de5-ed06cdd7e2bf",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 67240,
+      "size": 67240,
+      "sha256": "70af92011000db37e9c152ebfec26450a2a1d592c8166417539356e64f1776a5",
+      "file": "assets/70af92011000db37e9c152ebfec26450a2a1d592c8166417539356e64f1776a5.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "56e14f81-5d04-4014-a0aa-b180de712a72",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 27248,
+      "size": 27248,
+      "sha256": "6d0543f06b9d5393afe5baaeb040817e85af372bf5609d5d55746b1eb56b4010",
+      "file": "assets/6d0543f06b9d5393afe5baaeb040817e85af372bf5609d5d55746b1eb56b4010.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "7b36ad5d-1f2e-4171-9315-59b3493aa9c4",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 86608,
+      "size": 86608,
+      "sha256": "45683de03de37187604102316c0b42c0cb2d8dc9c4140a20ad471c3148cc1278",
+      "file": "assets/45683de03de37187604102316c0b42c0cb2d8dc9c4140a20ad471c3148cc1278.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "dc9c0a07-fb27-48a4-8ea8-0407cf4e8a4b",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 132000,
+      "size": 132000,
+      "sha256": "6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101",
+      "file": "assets/6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "37ab4e7e-2298-415c-9f38-c72f4ad61996",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 7716,
+      "size": 7716,
+      "sha256": "94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f",
+      "file": "assets/94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "b36598e7-26f3-43f3-bd87-c2c43120139e",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 18472,
+      "size": 18472,
+      "sha256": "3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a",
+      "file": "assets/3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a.woff2",
+      "nested_page": false
+    },
+    {
+      "uuid": "ec45aff4-386e-4275-a585-047272bf8821",
+      "mime": "font/woff2",
+      "compressed": false,
+      "encoded_size": 26832,
+      "size": 26832,
+      "sha256": "5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68",
+      "file": "assets/5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68.woff2",
+      "nested_page": false
+    }
+  ],
+  "page_order": [],
+  "external_resources": [
+    {
+      "id": "https://unpkg.com/react@18.3.1/umd/react.production.min.js",
+      "uuid": "9608c7d6-f69b-4808-ac07-a3636ba2f93d"
+    },
+    {
+      "id": "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
+      "uuid": "95963386-bc97-483d-8f8b-38780cb1205f"
+    }
+  ]
+}

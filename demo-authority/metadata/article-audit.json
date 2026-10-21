@@ -1,0 +1,1003 @@
+{
+  "title": "",
+  "url": "/why-a-new-warehouse-can-change-a-whole-neighborhood/",
+  "lang": "",
+  "html_classes": [],
+  "body_id": null,
+  "body_classes": [],
+  "dom_root": {
+    "tag": "div",
+    "id": "dc-root",
+    "classes": [],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured BUSINESS & ECONOMY Why a new warehouse can change a whole neighborhood Patricia Waters October 15, 2026 "
+  },
+  "dom_root_child": {
+    "tag": "div",
+    "id": null,
+    "classes": [
+      "sc-host"
+    ],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured BUSINESS & ECONOMY Why a new warehouse can change a whole neighborhood Patricia Waters October 15, 2026 "
+  },
+  "headings": [
+    {
+      "tag": "h1",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Why a new warehouse can change a whole neighborhood"
+    },
+    {
+      "tag": "h2",
+      "id": "jobs",
+      "classes": [],
+      "role": null,
+      "text": "What arrives with a large employer"
+    },
+    {
+      "tag": "h2",
+      "id": "traffic",
+      "classes": [],
+      "role": null,
+      "text": "Roads, trucks, and daily routines"
+    },
+    {
+      "tag": "h2",
+      "id": "housing",
+      "classes": [],
+      "role": null,
+      "text": "The effect on rents and home prices"
+    },
+    {
+      "tag": "h2",
+      "id": "local",
+      "classes": [],
+      "role": null,
+      "text": "What it means for local businesses"
+    },
+    {
+      "tag": "h2",
+      "id": "watch",
+      "classes": [],
+      "role": null,
+      "text": "What to watch next"
+    },
+    {
+      "tag": "h2",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Related stories"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Public Sans",
+      "count": 98
+    },
+    {
+      "name": "sans-serif",
+      "count": 98
+    },
+    {
+      "name": "Times New Roman",
+      "count": 19
+    },
+    {
+      "name": "Newsreader",
+      "count": 18
+    },
+    {
+      "name": "serif",
+      "count": 18
+    }
+  ],
+  "loaded_fonts": [
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "loaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "loaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "loaded"
+    }
+  ],
+  "colors": [
+    {
+      "value": "rgb(14, 31, 61)",
+      "count": 73
+    },
+    {
+      "value": "rgb(255, 255, 255)",
+      "count": 47
+    },
+    {
+      "value": "rgb(27, 36, 51)",
+      "count": 39
+    },
+    {
+      "value": "rgb(0, 0, 0)",
+      "count": 38
+    },
+    {
+      "value": "rgb(194, 202, 215)",
+      "count": 33
+    },
+    {
+      "value": "rgb(45, 55, 72)",
+      "count": 12
+    },
+    {
+      "value": "rgb(232, 178, 58)",
+      "count": 11
+    },
+    {
+      "value": "rgb(201, 150, 30)",
+      "count": 10
+    },
+    {
+      "value": "rgb(138, 106, 18)",
+      "count": 8
+    },
+    {
+      "value": "rgb(107, 117, 134)",
+      "count": 5
+    },
+    {
+      "value": "rgb(244, 245, 247)",
+      "count": 2
+    },
+    {
+      "value": "rgba(14, 31, 61, 0.1)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.12)",
+      "count": 1
+    }
+  ],
+  "radii": [
+    {
+      "value": "50%",
+      "count": 8
+    }
+  ],
+  "breakpoints": [
+    "print"
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 1000,
+    "device_pixel_ratio": 1
+  },
+  "document_dimensions": {
+    "width": 1440,
+    "height": 3285
+  },
+  "content": {
+    "main_count": 0,
+    "main_rect": null,
+    "max_width_values": [
+      "1320px",
+      "100%",
+      "1280px",
+      "820px",
+      "750px"
+    ]
+  },
+  "section_order": [
+    {
+      "order": 1,
+      "tag": "header",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured",
+      "heading": null
+    },
+    {
+      "order": 2,
+      "tag": "header",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "BUSINESS & ECONOMY Why a new warehouse can change a whole neighborhood Patricia Waters October 15, 2026 8 min read",
+      "heading": "Why a new warehouse can change a whole neighborhood"
+    },
+    {
+      "order": 3,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Related stories REAL ESTATE What higher insurance costs mean for first-time buyers HEALTH How new pricing rules could affect access to care BUSINESS & ECONOMY Why small retailers a",
+      "heading": "Related stories"
+    },
+    {
+      "order": 4,
+      "tag": "footer",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap",
+      "heading": null
+    }
+  ],
+  "header": {
+    "tag": "header",
+    "id": null,
+    "classes": [],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured",
+    "children": [
+      {
+        "tag": "div",
+        "id": null,
+        "classes": [],
+        "role": null,
+        "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured"
+      }
+    ],
+    "links": [
+      {
+        "text": "U.S. News",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "World News",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Business",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Science",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "",
+        "href": "/",
+        "aria": null
+      },
+      {
+        "text": "Lifestyle",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Health",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Real Estate",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Featured",
+        "href": "#",
+        "aria": null
+      }
+    ]
+  },
+  "footer": {
+    "tag": "footer",
+    "id": null,
+    "classes": [],
+    "role": null,
+    "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap",
+    "children": [
+      {
+        "tag": "div",
+        "id": null,
+        "classes": [],
+        "role": null,
+        "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap"
+      }
+    ],
+    "links": [
+      {
+        "text": "",
+        "href": "/",
+        "aria": null
+      },
+      {
+        "text": "Home",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "About Us",
+        "href": "/about/",
+        "aria": null
+      },
+      {
+        "text": "Our Team",
+        "href": "/our-team/",
+        "aria": null
+      },
+      {
+        "text": "Contact Us",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Blog",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Write for Us",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Editorial Guidelines",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Privacy",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Terms",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Cookies",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "AI",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "DMCA",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Sponsored",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Sitemap",
+        "href": "#",
+        "aria": null
+      }
+    ]
+  },
+  "scripts": [
+    {
+      "type": "text/javascript",
+      "async": true,
+      "defer": false,
+      "text_length": 287,
+      "asset": null
+    },
+    {
+      "type": "text/javascript",
+      "async": true,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe.js",
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"
+    },
+    {
+      "type": "text/javascript",
+      "async": false,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd.js",
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    },
+    {
+      "type": "text/javascript",
+      "async": false,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d.js",
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    },
+    {
+      "type": "text/x-dc",
+      "async": true,
+      "defer": false,
+      "text_length": 3695,
+      "asset": null
+    }
+  ],
+  "interactions": [
+    {
+      "tag": "a",
+      "type": null,
+      "text": "U.S. News",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "World News",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Business",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Science",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "",
+      "href": "/",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Lifestyle",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Health",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Real Estate",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Featured",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "BUSINESS & ECONOMY",
+      "href": "#",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Patricia Waters",
+      "href": "#",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "1. What arrives with a large employer",
+      "href": "#jobs",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "2. Roads, trucks, and daily routines",
+      "href": "#traffic",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "3. The effect on rents and home prices",
+      "href": "#housing",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "4. What it means for local businesses",
+      "href": "#local",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "5. What to watch next",
+      "href": "#watch",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Pitch an article",
+      "href": "/write-for-us/",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "REAL ESTATE What higher insurance costs mean for first-time buyers",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "HEALTH How new pricing rules could affect access to care",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "BUSINESS & ECONOMY Why small retailers are rethinking holiday hiring",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "",
+      "href": "/",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Home",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "About Us",
+      "href": "/about/",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Our Team",
+      "href": "/our-team/",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Contact Us",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Blog",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Write for Us",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Editorial Guidelines",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Privacy",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Terms",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Cookies",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "AI",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "DMCA",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Sponsored",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Sitemap",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    }
+  ],
+  "blob_records": [
+    {
+      "mime": "image/jpeg",
+      "size": 38214,
+      "sha256": "e4e70bb4ed6b53c8b13bffd5968b08ba4e48e5591730f4150e0e90ce11472b38"
+    },
+    {
+      "mime": "image/png",
+      "size": 165295,
+      "sha256": "1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 152722,
+      "sha256": "9b5abe3529506177c19bd2c1dd019f99ac1f364070d9a2603734e610c218a16d"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 57141,
+      "sha256": "6da808245538c93a9bafc15846d66bb9059fad6751417f0bfee5e7ccc7e5d622"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 62806,
+      "sha256": "92e84dbfef4e4283635623d2d6cef7309bf6eff5305258f931693075a0e6f104"
+    },
+    {
+      "mime": "image/png",
+      "size": 3297957,
+      "sha256": "a2c53f07fd3d9de9523e6289016a3b7957cef183082a18394f321439d71138ce"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 69150,
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 10751,
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 131835,
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    }
+  ],
+  "data_records": [
+    {
+      "mime": "font/woff2",
+      "size": 12716,
+      "sha256": "47d6b14e8485a0e9fbdb1da54f08cbb6a44ab9e6bf0e87910cbe57c9d39cf589"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 41296,
+      "sha256": "512461782bfeca8def39178447b4c8cd456a8157f9d0baf7bab4704fb0403b16"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 67240,
+      "sha256": "70af92011000db37e9c152ebfec26450a2a1d592c8166417539356e64f1776a5"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 27248,
+      "sha256": "6d0543f06b9d5393afe5baaeb040817e85af372bf5609d5d55746b1eb56b4010"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 86608,
+      "sha256": "45683de03de37187604102316c0b42c0cb2d8dc9c4140a20ad471c3148cc1278"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 132000,
+      "sha256": "6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 7716,
+      "sha256": "94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 18472,
+      "sha256": "3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 26832,
+      "sha256": "5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68"
+    }
+  ],
+  "route": "/why-a-new-warehouse-can-change-a-whole-neighborhood/",
+  "http_status": 200,
+  "console_messages": [],
+  "page_errors": [],
+  "request_failures": [],
+  "runtime_replacements": 18
+}

@@ -1,0 +1,26 @@
+---
+import { getGlobalChrome, listBlogs, listCategories, listPages, listUsers } from '../lib/data';
+import { getBlogPermalink, getCategoryPermalink, getPageRouteSlug } from '../lib/permalinks';
+import { mutateGenericPage } from '../lib/commercial-renderers';
+import { referenceSlug, renderAuthority } from '../lib/demo-authority';
+
+export const prerender = false;
+const [pages, posts, categories, users, chrome] = await Promise.all([listPages(), listBlogs(), listCategories(), listUsers(), getGlobalChrome()]);
+const lines: string[] = [];
+const add = (heading: string, items: Array<{ title: string; href: string }>) => {
+  lines.push(`## ${heading}`, '', ...items.map((item) => `- [${item.title}](${item.href})`), '');
+};
+const slash = (value: string) => value === '/' ? '/' : `/${value.replace(/^\/+|\/+$/g, '')}/`;
+add('Pages', pages.filter((page: any) => !page?.draft && !page?.seo?.noindex && page?._sys?.filename !== '404').map((page: any) => ({ title: page.title, href: page?._sys?.filename === 'home' ? '/' : slash(getPageRouteSlug(page)) })));
+add('Stories', posts.filter((post: any) => !post?.draft && !post?.seo?.noindex).map((post: any) => ({ title: post.title, href: slash(getBlogPermalink(post)) })));
+add('Categories', categories.filter((category: any) => !category?.seo?.noindex).map((category: any) => ({ title: category.title, href: getCategoryPermalink(category) })));
+add('Authors', users.filter((user: any) => !user?.seo?.noindex).map((user: any) => ({ title: user.name, href: `/author/${referenceSlug(user)}/` })));
+const title = 'Sitemap';
+const description = 'Browse public pages, stories, categories, and authors published by Commercial Daily News.';
+return renderAuthority({
+  family: 'page',
+  chrome,
+  seo: { title: `${title} | Commercial Daily News`, description, canonical: '/sitemap/' },
+  mutate: ($) => mutateGenericPage($, { title, demoHeadline: title, body: lines.join('\n') }),
+});
+---

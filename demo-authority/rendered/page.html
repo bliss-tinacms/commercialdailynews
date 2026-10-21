@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html><head><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../assets/d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../assets/35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d.js"};</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../assets/8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe.js"></script>
+<style>x-dc{display:none!important}</style><script src="../assets/d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd.js"></script><script src="../assets/35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d.js"></script><style></style><style>html,body{height:100%;margin:0}#dc-root,#dc-root>.sc-host{height:100%}</style><link rel="preconnect" href="https://fonts.googleapis.com" data-dc-tpl="1"><style data-dc-tpl="2">/* vietnamese */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/47d6b14e8485a0e9fbdb1da54f08cbb6a44ab9e6bf0e87910cbe57c9d39cf589.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/512461782bfeca8def39178447b4c8cd456a8157f9d0baf7bab4704fb0403b16.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/70af92011000db37e9c152ebfec26450a2a1d592c8166417539356e64f1776a5.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/6d0543f06b9d5393afe5baaeb040817e85af372bf5609d5d55746b1eb56b4010.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/45683de03de37187604102316c0b42c0cb2d8dc9c4140a20ad471c3148cc1278.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/6d0543f06b9d5393afe5baaeb040817e85af372bf5609d5d55746b1eb56b4010.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/45683de03de37187604102316c0b42c0cb2d8dc9c4140a20ad471c3148cc1278.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style data-dc-tpl="3">body{margin:0;background:#F4F5F7}*{box-sizing:border-box}a{color:#0E1F3D;text-decoration:none}a:hover{color:#B8860B}img{display:block;max-width:100%}</style></head>
+<body>
+
+<div id="dc-root"><div class="sc-host" data-sc-name="Root"><div data-dc-tpl="4" style="font-family: &quot;Public Sans&quot;, sans-serif; font-size: 18px; line-height: 1.65; color: rgb(27, 36, 51); background: rgb(244, 245, 247);"><header data-dc-tpl="5" style="position: sticky; top: 0px; z-index: 50; background: rgb(14, 31, 61); color: rgb(255, 255, 255); border-top: 4px solid rgb(232, 178, 58); box-shadow: rgba(14, 31, 61, 0.25) 0px 2px 12px;"><div data-dc-tpl="6" style="max-width: 1320px; margin: 0px auto; padding: 12px clamp(16px, 3vw, 32px); display: grid; grid-template-columns: minmax(0px, 1fr) auto minmax(0px, 1fr); align-items: center; gap: clamp(36px, 4vw, 64px);"><nav data-dc-tpl="8" style="display: flex; justify-content: flex-end; align-items: center; gap: 6px clamp(22px, 2.4vw, 40px); font-weight: 600; font-size: 15px; white-space: nowrap;"><a data-dc-tpl="9" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">U.S. News</a><a data-dc-tpl="10" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">World News</a><a data-dc-tpl="11" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">Business</a><a data-dc-tpl="12" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">Science</a></nav><a data-dc-tpl="15" href="/" style="display: flex; align-items: center; justify-content: center;"><img data-dc-tpl="16" src="../assets/1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f.png" alt="Commercial Daily News" style="height: clamp(52px, 5vw, 64px); width: auto;"></a><nav data-dc-tpl="18" style="display: flex; justify-content: flex-start; align-items: center; gap: 6px clamp(22px, 2.4vw, 40px); font-weight: 600; font-size: 15px; white-space: nowrap;"><a data-dc-tpl="19" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">Lifestyle</a><a data-dc-tpl="20" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">Health</a><a data-dc-tpl="21" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">Real Estate</a><a data-dc-tpl="22" href="#" class="scp0" style="position: relative; color: rgb(255, 255, 255); padding: 6px 0px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;">Featured</a></nav></div></header><section data-dc-tpl="42" style="background: rgb(14, 31, 61); color: rgb(255, 255, 255);"><div data-dc-tpl="43" style="max-width: 1280px; margin: 0px auto; padding: clamp(56px, 8vw, 104px) clamp(16px, 3vw, 32px); display: flex; flex-direction: column; gap: 22px;"><h1 data-dc-tpl="44" style="font-family: Newsreader, serif; font-weight: 500; font-size: clamp(36px, 4.6vw, 64px); line-height: 1.05; letter-spacing: -0.02em; margin: 0px; width: 100%;">Editorial Guidelines</h1></div></section><main data-dc-tpl="45" style="max-width: 1280px; margin: 0px auto; padding: clamp(48px, 6vw, 72px) clamp(16px, 3vw, 32px) clamp(64px, 8vw, 104px);"><p data-dc-tpl="46" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">These are the editorial standards Commercial Daily News applies to its reporting. They govern the daily editorial decisions the newsroom makes about what to publish, how to source it, how to label it, and how to correct it when necessary. They apply to staff reporting, contributed pieces, and any wire or partner material published on the site.</p><h2 data-dc-tpl="47" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">Accuracy</h2><p data-dc-tpl="48" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">Every factual claim in a piece published on the site should be verifiable. Significant claims are supported by named sources, public records, or, on rare occasion, anonymous sources whose reliability has been judged by a senior editor. Errors discovered after publication are corrected on the record.</p><h2 data-dc-tpl="49" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">Sourcing and Attribution</h2><p data-dc-tpl="50" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">The publication attributes its claims. Quoted persons are identified by name and role. Studies, public records, and other reporting referenced in the coverage are credited and, where possible, linked. Where reporting was first developed by another publication, that publication is credited on first mention.</p><h2 data-dc-tpl="51" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">Anonymous Sources</h2><p data-dc-tpl="52" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">Anonymous sourcing is used only when the information genuinely matters and could not be obtained any other way, and only with the knowledge of a senior editor. The source is described as specifically as possible without identifying the individual. The publication does not retroactively grant anonymity; the terms are settled before the information is conveyed.</p><h2 data-dc-tpl="53" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">News, Analysis, and Opinion</h2><p data-dc-tpl="54" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">News reporting is presented straight. Analysis interprets the reporting and is labeled as such. Opinion advances a position and reflects the writer rather than the publication. The three categories appear in different sections of the site, are tagged distinctly, and are meant to be visibly distinguishable at a glance.</p><h2 data-dc-tpl="55" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">Fairness</h2><p data-dc-tpl="56" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">Fairness means giving people and organizations covered in the reporting a meaningful opportunity to respond to material allegations before publication. It does not mean treating contested propositions as equally credible regardless of evidence. When the facts on a question are clear, the publication reports them, regardless of any public figure’s preference.</p><h2 data-dc-tpl="57" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">Conflicts of Interest</h2><p data-dc-tpl="58" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">Editors and reporters disclose financial, personal, and political relationships that could create the appearance of a conflict, and step away from coverage where appropriate. Contributors are held to the same standard. Where a relevant interest exists, it is disclosed in the affected piece or in the author’s bio.</p><h2 data-dc-tpl="59" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">Corrections</h2><p data-dc-tpl="60" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">Substantive corrections are appended to the affected article in a clearly marked corrections box, with a dated note describing what changed. Trivial fixes such as typos and broken links are handled silently. Any correction that alters the meaning of a sentence is recorded openly. The publication does not silently rewrite the record.</p><h2 data-dc-tpl="61" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">Wire and Partner Material</h2><p data-dc-tpl="62" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">Some of what runs on the site originates with wire services, syndication partners, or contributors. Such material is clearly attributed and held to the same accuracy standards as staff reporting. Questions about the provenance of a particular piece may be directed to the editorial address.</p><h2 data-dc-tpl="63" style="font-family: Newsreader, serif; font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin: 40px 0px 14px; color: rgb(14, 31, 61);">A Working Note</h2><p data-dc-tpl="64" style="margin: 0px 0px 20px; color: rgb(45, 55, 72); line-height: 1.75;">These guidelines are not exhaustive. Most editorial decisions in practice are matters of judgment. When the rules and the situation do not line up cleanly, the newsroom returns to the underlying question: is this a piece the publication is prepared to stand behind and explain to a reader? If the answer is yes, the piece publishes. If not, the piece holds.</p></main><footer data-dc-tpl="65" style="background: rgb(14, 31, 61); color: rgb(194, 202, 215);"><div data-dc-tpl="66" style="max-width: 1280px; margin: 0px auto; padding: 40px clamp(16px, 3vw, 32px) 28px;"><div data-dc-tpl="67" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; align-items: center;"><a data-dc-tpl="68" href="/" style="display: flex;"><img data-dc-tpl="69" src="../assets/1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f.png" alt="Commercial Daily News" style="height: 64px; width: auto;"></a><nav data-dc-tpl="70" style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px;"><a data-dc-tpl="71" href="#" class="scp1" style="color: rgb(255, 255, 255); transition: color 0.15s;">Home</a><a data-dc-tpl="72" href="/about/" class="scp1" style="color: rgb(255, 255, 255); transition: color 0.15s;">About Us</a><a data-dc-tpl="73" href="/our-team/" class="scp1" style="color: rgb(255, 255, 255); transition: color 0.15s;">Our Team</a><a data-dc-tpl="74" href="#" class="scp1" style="color: rgb(255, 255, 255); transition: color 0.15s;">Contact Us</a><a data-dc-tpl="75" href="#" class="scp1" style="color: rgb(255, 255, 255); transition: color 0.15s;">Blog</a><a data-dc-tpl="76" href="#" class="scp1" style="color: rgb(255, 255, 255); transition: color 0.15s;">Write for Us</a></nav></div><div data-dc-tpl="77" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 14px;"><span data-dc-tpl="78">© 2026 Commercial Daily News. All rights reserved.</span><div data-dc-tpl="79" style="display: flex; flex-wrap: wrap; gap: 8px 18px;"><a data-dc-tpl="80" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">Editorial Guidelines</a><a data-dc-tpl="81" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">Privacy</a><a data-dc-tpl="82" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">Terms</a><a data-dc-tpl="83" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">Cookies</a><a data-dc-tpl="84" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">AI</a><a data-dc-tpl="85" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">DMCA</a><a data-dc-tpl="86" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">Sponsored</a><a data-dc-tpl="87" href="#" class="scp1" style="color: rgb(194, 202, 215); transition: color 0.15s;">Sitemap</a></div></div></div></footer></div></div></div>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false };
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  renderVals() {
+    const mobile = this.state.w < 1100;
+    const img = s => `assets/cdn-stock/picsum-${s}.jpg`;
+    return {
+      isDesk: !mobile, isMob: mobile, menuOpen: this.state.menuOpen, menuClosed: !this.state.menuOpen, showMob: mobile && this.state.menuOpen,
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
+      navHover: { color: '#E8B23A' },
+      cardHover: { boxShadow: '0 12px 32px rgba(14,31,61,.16)' },
+      tileHover: { background: '#16305C' },
+      posts: [
+        { cat: 'Business & Economy', title: 'Why a new warehouse can change a whole neighborhood', excerpt: 'Jobs, traffic, and rents all move when a large employer arrives.', img: img('cr-1'), meta: 'Oct 15 · 8 min read' },
+        { cat: 'Real Estate', title: 'What higher insurance costs mean for first-time buyers', excerpt: 'Premiums are now a bigger part of the monthly payment.', img: img('cr-2'), meta: 'Oct 14 · 6 min read' },
+        { cat: 'Health', title: 'How new pricing rules could affect access to care', excerpt: 'The changes reach patients, clinics, and employers.', img: img('cr-3'), meta: 'Oct 12 · 9 min read' }
+      ],
+      values: [
+        { name: 'Accessible and relevant', desc: 'Important stories, without unnecessary jargon.' },
+        { name: 'Background that matters', desc: 'What makes a development significant, and what is still unfolding.' },
+        { name: 'Your own conclusions', desc: 'Information you can use to think critically.' }
+      ],
+      coverage: [
+        { n: '01', name: 'U.S. News', desc: 'National developments and the decisions behind them.' },
+        { n: '02', name: 'World News', desc: 'International affairs with consequences at home.' },
+        { n: '03', name: 'Business & Economy', desc: 'Markets, companies, and household costs.' },
+        { n: '04', name: 'Science & Technology', desc: 'Discoveries and tools reshaping everyday routines.' },
+        { n: '05', name: 'Health', desc: 'Research and developments that affect access to care.' },
+        { n: '06', name: 'Real Estate', desc: 'Housing, property, and where communities invest.' }
+      ],
+      process: [
+        { n: '01', name: 'Relevant details', desc: 'Information that helps readers understand the subject and its effects.' },
+        { n: '02', name: 'Clear sourcing', desc: 'Identifiable sources, with confirmed facts kept apart from speculation.' },
+        { n: '03', name: 'Measured language', desc: 'No exaggerated significance or overstated certainty.' },
+        { n: '04', name: 'Fair context', desc: 'Relevant perspectives, not conclusions from isolated details.' },
+        { n: '05', name: 'Reader trust', desc: 'Opinion and promotion identified; confirmed errors addressed.' }
+      ],
+      team: [
+        { name: 'Richard Sheppard', role: 'Publisher', bio: 'Fort Worth', img: 'assets/cdn-team/richard-sheppard.jpg' },
+        { name: 'Kathleen Greene', role: 'Editor-in-Chief', bio: 'Syracuse', img: 'assets/cdn-team/kathleen-greene.jpg' },
+        { name: 'Jerry Barnes', role: 'Managing Editor', bio: 'Mobile', img: 'assets/cdn-team/jerry-barnes.jpg' },
+        { name: 'Patricia Waters', role: 'Business Editor', bio: 'Reno', img: 'assets/cdn-team/patricia-waters.jpg' }
+      ]
+    };
+  }
+}
+</script>
+
+
+</body></html>

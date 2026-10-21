@@ -1,0 +1,25 @@
+{
+  "title": "Footer Menu",
+  "items": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "About Us",
+      "href": "/about/"
+    },
+    {
+      "label": "Our Team",
+      "href": "/team/"
+    },
+    {
+      "label": "Contact Us",
+      "href": "/contact/"
+    },
+    {
+      "label": "Blog",
+      "href": "/category/featured/"
+    }
+  ]
+}

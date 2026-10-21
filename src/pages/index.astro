@@ -1,0 +1,28 @@
+---
+import { getGlobalChrome, getPublicPage, listUsers } from '../lib/data';
+import { renderAuthority } from '../lib/demo-authority';
+import { mutateHome, sortNewsroom } from '../lib/commercial-renderers';
+
+export const prerender = false;
+const data: any = (await getPublicPage('home')).data?.page;
+if (!data) return new Response('Not Found', { status: 404 });
+const chrome = await getGlobalChrome();
+const config: any = chrome.config;
+const users = sortNewsroom(await listUsers());
+const seo = data.seo || {};
+return renderAuthority({
+  family: 'index',
+  chrome,
+  seo: {
+    title: seo.metaTitle || config?.seo?.title || 'Commercial Daily News',
+    description: seo.metaDescription || data.demoIntroduction || config?.seo?.description || '',
+    canonical: seo.canonicalUrl || '/',
+    image: seo.ogImage || data.homeHeroImage,
+    ogTitle: seo.ogTitle,
+    ogDescription: seo.ogDescription,
+    noindex: seo.noindex,
+    nofollow: seo.nofollow,
+  },
+  mutate: ($) => mutateHome($, data, [], users),
+});
+---

@@ -1,0 +1,20 @@
+---
+import { getGlobalChrome } from '../lib/data';
+import { renderAuthority } from '../lib/demo-authority';
+export const prerender = false;
+const chrome = await getGlobalChrome();
+return renderAuthority({
+  family: '404',
+  chrome,
+  status: 404,
+  mutate: ($) => {
+    $('[data-dc-tpl="49"]').attr('href', '/category/featured/');
+  },
+  seo: {
+    title: 'Page Not Found | Commercial Daily News',
+    description: 'The page you are looking for may have moved, or the link may be out of date.',
+    canonical: '/404/',
+    noindex: true,
+  },
+});
+---

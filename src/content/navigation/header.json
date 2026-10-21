@@ -1,0 +1,13 @@
+{
+  "title": "Header Navigation",
+  "items": [
+    {"label":"U.S. News","href":"/category/us-news/"},
+    {"label":"World News","href":"/category/world-news/"},
+    {"label":"Business","href":"/category/business-economy/"},
+    {"label":"Science","href":"/category/science-technology/"},
+    {"label":"Lifestyle","href":"/category/lifestyle/"},
+    {"label":"Health","href":"/category/health/"},
+    {"label":"Real Estate","href":"/category/real-estate/"},
+    {"label":"Featured","href":"/category/featured/"}
+  ]
+}

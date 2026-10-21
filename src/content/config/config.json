@@ -1,0 +1,37 @@
+{
+  "headerNavigation": "src/content/navigation/header.json",
+  "footerNavigation": "src/content/navigation/footer.json",
+  "seo": {
+    "title": "Commercial Daily News",
+    "description": "Clear reporting and practical context on business, public affairs, science, health, real estate, lifestyle, and the developments shaping everyday life.",
+    "siteOwner": "Richard Sheppard",
+    "logo": "https://res.cloudinary.com/ttpcbhdd/image/upload/v1792610814/commercialdailynews/demo/1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f.png",
+    "favicon": "/favicon.svg",
+    "footerLogo": "https://res.cloudinary.com/ttpcbhdd/image/upload/v1792610814/commercialdailynews/demo/1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f.png"
+  },
+  "contactForm": {
+    "formspreeEndpoint": "https://formspree.io/f/xjygnadv",
+    "heading": "Send us a message",
+    "description": "Contact the Commercial Daily News newsroom.",
+    "buttonText": "Send message",
+    "note": "Messages are routed to the appropriate Commercial Daily News desk.",
+    "subject": "Commercial Daily News contact form submission"
+  },
+  "codeInjection": {
+    "headerCode": "",
+    "footerCode": ""
+  },
+  "contactLinks": [],
+  "copyrightText": "© {year} Commercial Daily News. All rights reserved.",
+  "legalLinks": [
+    { "label": "Editorial Guidelines", "href": "/editorial-guidelines/" },
+    { "label": "Privacy", "href": "/privacy-policy/" },
+    { "label": "Terms", "href": "/terms-of-use/" },
+    { "label": "Cookies", "href": "/cookie-policy/" },
+    { "label": "AI", "href": "/ai-policy/" },
+    { "label": "DMCA", "href": "/dmca-policy/" },
+    { "label": "Sponsored", "href": "/sponsored-content-policy/" },
+    { "label": "Sitemap", "href": "/sitemap/" }
+  ],
+  "footerStarfield": false
+}

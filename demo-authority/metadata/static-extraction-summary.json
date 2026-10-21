@@ -1,0 +1,47 @@
+{
+  "404": {
+    "asset_count": 13,
+    "unique_hashes": 13,
+    "bundle_sha256": "b1363c13237d16ea1a102c7ce3b6b3639935e102959b4479582d566e1bd03cca"
+  },
+  "about": {
+    "asset_count": 16,
+    "unique_hashes": 16,
+    "bundle_sha256": "2b0654cfe57d44cb9e242cca3f4d37be6dde1f2b8027b1c5f8f3686bef91000c"
+  },
+  "article": {
+    "asset_count": 18,
+    "unique_hashes": 18,
+    "bundle_sha256": "99b2f7945a5d17681afb8a5958f556c56b943bc226d22bc635b7bbcdd61e9d30"
+  },
+  "author": {
+    "asset_count": 21,
+    "unique_hashes": 21,
+    "bundle_sha256": "78846b4695a810d73eb5f7689dc89d77b8cd2aac2634b690e64ee0ab8cbf6829"
+  },
+  "category": {
+    "asset_count": 23,
+    "unique_hashes": 23,
+    "bundle_sha256": "8062efb811c35d2d0ad77840fb6e4a8b4399c8caeea1b8f29e4a0851e268c1da"
+  },
+  "contact": {
+    "asset_count": 13,
+    "unique_hashes": 13,
+    "bundle_sha256": "c58fd8e380eb5847160b568045060592b0850ed41ad9728c0a454501bcba1fa6"
+  },
+  "index": {
+    "asset_count": 17,
+    "unique_hashes": 17,
+    "bundle_sha256": "1d335075dd99adf30e6e9e046e61418a14ed42077b6ac56e22af09945ddfc0e6"
+  },
+  "page": {
+    "asset_count": 13,
+    "unique_hashes": 13,
+    "bundle_sha256": "fd4898845fd8695911eb62955283df691561f21868ec7a8122ca3c576b2c79b3"
+  },
+  "team": {
+    "asset_count": 19,
+    "unique_hashes": 19,
+    "bundle_sha256": "7b3c18c4d4f0f190786e8463e56080b203c431152f6d9c6bbb8284f0b95a6a3d"
+  }
+}

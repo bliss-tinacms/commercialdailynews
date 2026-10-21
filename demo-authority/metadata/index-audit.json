@@ -1,0 +1,1114 @@
+{
+  "title": "",
+  "url": "/",
+  "lang": "",
+  "html_classes": [],
+  "body_id": null,
+  "body_classes": [],
+  "dom_root": {
+    "tag": "div",
+    "id": "dc-root",
+    "classes": [],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured Where business meets everyday life A business decision can change a neighborhood. A policy announcement "
+  },
+  "dom_root_child": {
+    "tag": "div",
+    "id": null,
+    "classes": [
+      "sc-host"
+    ],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured Where business meets everyday life A business decision can change a neighborhood. A policy announcement "
+  },
+  "headings": [
+    {
+      "tag": "h1",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Where business meets everyday life"
+    },
+    {
+      "tag": "h2",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Stories that matter, explained clearly."
+    },
+    {
+      "tag": "h2",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Stories taking shape"
+    },
+    {
+      "tag": "h2",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "What we cover"
+    },
+    {
+      "tag": "h2",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "A strong story needs substance, not just a headline."
+    },
+    {
+      "tag": "h2",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "The newsroom"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Public Sans",
+      "count": 202
+    },
+    {
+      "name": "sans-serif",
+      "count": 202
+    },
+    {
+      "name": "Newsreader",
+      "count": 45
+    },
+    {
+      "name": "serif",
+      "count": 45
+    },
+    {
+      "name": "Times New Roman",
+      "count": 19
+    }
+  ],
+  "loaded_fonts": [
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "italic",
+      "weight": "500",
+      "status": "loaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "500",
+      "status": "loaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Newsreader",
+      "style": "normal",
+      "weight": "700",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "400",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "600",
+      "status": "loaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Public Sans",
+      "style": "normal",
+      "weight": "700",
+      "status": "loaded"
+    }
+  ],
+  "colors": [
+    {
+      "value": "rgb(27, 36, 51)",
+      "count": 120
+    },
+    {
+      "value": "rgb(255, 255, 255)",
+      "count": 95
+    },
+    {
+      "value": "rgb(14, 31, 61)",
+      "count": 93
+    },
+    {
+      "value": "rgb(74, 85, 104)",
+      "count": 64
+    },
+    {
+      "value": "rgb(194, 202, 215)",
+      "count": 53
+    },
+    {
+      "value": "rgb(0, 0, 0)",
+      "count": 38
+    },
+    {
+      "value": "rgb(232, 178, 58)",
+      "count": 36
+    },
+    {
+      "value": "rgb(138, 106, 18)",
+      "count": 36
+    },
+    {
+      "value": "rgb(107, 117, 134)",
+      "count": 12
+    },
+    {
+      "value": "rgb(244, 245, 247)",
+      "count": 2
+    },
+    {
+      "value": "rgb(214, 220, 230)",
+      "count": 2
+    },
+    {
+      "value": "rgb(174, 184, 200)",
+      "count": 2
+    },
+    {
+      "value": "rgba(14, 31, 61, 0.45)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.15)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.12)",
+      "count": 1
+    }
+  ],
+  "radii": [
+    {
+      "value": "50%",
+      "count": 16
+    }
+  ],
+  "breakpoints": [
+    "print"
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 1000,
+    "device_pixel_ratio": 1
+  },
+  "document_dimensions": {
+    "width": 1440,
+    "height": 5720
+  },
+  "content": {
+    "main_count": 0,
+    "main_rect": null,
+    "max_width_values": [
+      "1320px",
+      "100%",
+      "1280px",
+      "820px",
+      "720px"
+    ]
+  },
+  "section_order": [
+    {
+      "order": 1,
+      "tag": "header",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured",
+      "heading": null
+    },
+    {
+      "order": 2,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Where business meets everyday life A business decision can change a neighborhood. A policy announcement can influence what families pay. We explain what happened, why it deserves a",
+      "heading": "Where business meets everyday life"
+    },
+    {
+      "order": 3,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "ABOUT US Stories that matter, explained clearly. Commercial Daily News is a general news website that explores the day\u2019s developments and their wider effects. Our name reflects an ",
+      "heading": "Stories that matter, explained clearly."
+    },
+    {
+      "order": 4,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Stories taking shape BUSINESS & ECONOMY Why a new warehouse can change a whole neighborhood Jobs, traffic, and rents all move when a large employer arrives. Oct 15 \u00b7 8 min read REA",
+      "heading": "Stories taking shape"
+    },
+    {
+      "order": 5,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "COVERAGE AREAS What we cover Commerce touches more than markets \u2014 it shapes employment, housing, healthcare, and the products people use each day. 01 U.S. News National development",
+      "heading": "What we cover"
+    },
+    {
+      "order": 6,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "WHAT GUIDES OUR CONTENT A strong story needs substance, not just a headline. Relevant details Information that helps readers understand the subject and its effects. Clear sourcing ",
+      "heading": "A strong story needs substance, not just a headline."
+    },
+    {
+      "order": 7,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "OUR TEAM The newsroom Richard Sheppard Publisher Fort Worth Kathleen Greene Editor-in-Chief Syracuse Jerry Barnes Managing Editor Mobile Patricia Waters Business Editor Reno",
+      "heading": "The newsroom"
+    },
+    {
+      "order": 8,
+      "tag": "section",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "\u201c Readers should be able to understand a subject without sorting through jargon or already knowing its history. Kathleen Greene Editor-in-Chief, Commercial Daily News",
+      "heading": null
+    },
+    {
+      "order": 9,
+      "tag": "footer",
+      "id": null,
+      "classes": [],
+      "role": null,
+      "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap",
+      "heading": null
+    }
+  ],
+  "header": {
+    "tag": "header",
+    "id": null,
+    "classes": [],
+    "role": null,
+    "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured",
+    "children": [
+      {
+        "tag": "div",
+        "id": null,
+        "classes": [],
+        "role": null,
+        "text": "U.S. News World News Business Science Lifestyle Health Real Estate Featured"
+      }
+    ],
+    "links": [
+      {
+        "text": "U.S. News",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "World News",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Business",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Science",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "",
+        "href": "/",
+        "aria": null
+      },
+      {
+        "text": "Lifestyle",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Health",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Real Estate",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Featured",
+        "href": "#",
+        "aria": null
+      }
+    ]
+  },
+  "footer": {
+    "tag": "footer",
+    "id": null,
+    "classes": [],
+    "role": null,
+    "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap",
+    "children": [
+      {
+        "tag": "div",
+        "id": null,
+        "classes": [],
+        "role": null,
+        "text": "Home About Us Our Team Contact Us Blog Write for Us \u00a9 2026 Commercial Daily News. All rights reserved. Editorial Guidelines Privacy Terms Cookies AI DMCA Sponsored Sitemap"
+      }
+    ],
+    "links": [
+      {
+        "text": "",
+        "href": "/",
+        "aria": null
+      },
+      {
+        "text": "Home",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "About Us",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Our Team",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Contact Us",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Blog",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Write for Us",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Editorial Guidelines",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Privacy",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Terms",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Cookies",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "AI",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "DMCA",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Sponsored",
+        "href": "#",
+        "aria": null
+      },
+      {
+        "text": "Sitemap",
+        "href": "#",
+        "aria": null
+      }
+    ]
+  },
+  "scripts": [
+    {
+      "type": "text/javascript",
+      "async": true,
+      "defer": false,
+      "text_length": 287,
+      "asset": null
+    },
+    {
+      "type": "text/javascript",
+      "async": true,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe.js",
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"
+    },
+    {
+      "type": "text/javascript",
+      "async": false,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd.js",
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    },
+    {
+      "type": "text/javascript",
+      "async": false,
+      "defer": false,
+      "text_length": 0,
+      "asset": "assets/35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d.js",
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    },
+    {
+      "type": "text/x-dc",
+      "async": true,
+      "defer": false,
+      "text_length": 1103347,
+      "asset": null
+    }
+  ],
+  "interactions": [
+    {
+      "tag": "a",
+      "type": null,
+      "text": "U.S. News",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "World News",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Business",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Science",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "",
+      "href": "/",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Lifestyle",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Health",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Real Estate",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Featured",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp0"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "BUSINESS & ECONOMY Why a new warehouse can change a whole neighborhood Jobs, traffic, and rents all move when a large employer arrives. Oct ",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "REAL ESTATE What higher insurance costs mean for first-time buyers Premiums are now a bigger part of the monthly payment. Oct 14 \u00b7 6 min rea",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "HEALTH How new pricing rules could affect access to care The changes reach patients, clinics, and employers. Oct 12 \u00b7 9 min read",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp2"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "01 U.S. News National developments and the decisions behind them.",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "02 World News International affairs with consequences at home.",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "03 Business & Economy Markets, companies, and household costs.",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "04 Science & Technology Discoveries and tools reshaping everyday routines.",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "05 Health Research and developments that affect access to care.",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "06 Real Estate Housing, property, and where communities invest.",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp3"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Richard Sheppard Publisher Fort Worth",
+      "href": "#",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Kathleen Greene Editor-in-Chief Syracuse",
+      "href": "#",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Jerry Barnes Managing Editor Mobile",
+      "href": "#",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Patricia Waters Business Editor Reno",
+      "href": "#",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "",
+      "href": "/",
+      "id": null,
+      "classes": [],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Home",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "About Us",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Our Team",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Contact Us",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Blog",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Write for Us",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Editorial Guidelines",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Privacy",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Terms",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Cookies",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "AI",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "DMCA",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Sponsored",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    },
+    {
+      "tag": "a",
+      "type": null,
+      "text": "Sitemap",
+      "href": "#",
+      "id": null,
+      "classes": [
+        "scp1"
+      ],
+      "aria": null
+    }
+  ],
+  "blob_records": [
+    {
+      "mime": "image/jpeg",
+      "size": 144751,
+      "sha256": "6734a1cd8b6d5e89c1708c503e4632be5bb064453be7cd63cb7811194fbccc8b"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 131449,
+      "sha256": "852639437b1d83ade786ea72ec49bcee18d4d71d7f1958d36139c2f2cab7d3ce"
+    },
+    {
+      "mime": "image/png",
+      "size": 165295,
+      "sha256": "1250a1c335598dc8be3de3ae58496f4638fb5f129b7328d5ec9534c0c9ded39f"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 227495,
+      "sha256": "7035d681c3a032f8bc286dc5066eb80e20d1917c3284e4ac72c6fdd0a7bb82fa"
+    },
+    {
+      "mime": "image/png",
+      "size": 3297957,
+      "sha256": "a2c53f07fd3d9de9523e6289016a3b7957cef183082a18394f321439d71138ce"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 69150,
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 10751,
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    },
+    {
+      "mime": "text/javascript",
+      "size": 131835,
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    }
+  ],
+  "data_records": [
+    {
+      "mime": "font/woff2",
+      "size": 12716,
+      "sha256": "47d6b14e8485a0e9fbdb1da54f08cbb6a44ab9e6bf0e87910cbe57c9d39cf589"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 41296,
+      "sha256": "512461782bfeca8def39178447b4c8cd456a8157f9d0baf7bab4704fb0403b16"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 67240,
+      "sha256": "70af92011000db37e9c152ebfec26450a2a1d592c8166417539356e64f1776a5"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 27248,
+      "sha256": "6d0543f06b9d5393afe5baaeb040817e85af372bf5609d5d55746b1eb56b4010"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 86608,
+      "sha256": "45683de03de37187604102316c0b42c0cb2d8dc9c4140a20ad471c3148cc1278"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 132000,
+      "sha256": "6e4f2958c3a7c4a80acde4e5a679abe7e01bc1e30b92be3c7a8b696ef401d101"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 7716,
+      "sha256": "94593e69fad0885b2b0b74cd18d036c7e9cd6051b2256ab281a20f5bc9ccb46f"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 18472,
+      "sha256": "3a00a32f0242b723dcea79935747d6d27dd93675d03ef23f470dfe274e79586a"
+    },
+    {
+      "mime": "font/woff2",
+      "size": 26832,
+      "sha256": "5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 105949,
+      "sha256": "3b85da78e320dd909dcb8f224d839c3dcd0189c72ed44b5443b4fb97b692c599"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 62806,
+      "sha256": "92e84dbfef4e4283635623d2d6cef7309bf6eff5305258f931693075a0e6f104"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 57141,
+      "sha256": "6da808245538c93a9bafc15846d66bb9059fad6751417f0bfee5e7ccc7e5d622"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 160535,
+      "sha256": "0cccf74766485af38c2d1cad4a40a539af64c3138864999308cedcdf7cbb7df7"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 153582,
+      "sha256": "df89e54d81799c8e3718ff774e3f586320b82460d8af02f795fd15f58281786f"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 132035,
+      "sha256": "2d02dfaa49febf8573c3dfac3e15d6fbaf2e2d8c90cd36df6f82fc3910a2996b"
+    },
+    {
+      "mime": "image/jpeg",
+      "size": 152722,
+      "sha256": "9b5abe3529506177c19bd2c1dd019f99ac1f364070d9a2603734e610c218a16d"
+    }
+  ],
+  "route": "/",
+  "http_status": 200,
+  "console_messages": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "type": "warning",
+      "text": "[bundle] resource failed to load: IMG <localhost>/%7B%7B%20p.img%20%7D%7D"
+    },
+    {
+      "type": "warning",
+      "text": "[bundle] resource failed to load: IMG <localhost>/%7B%7B%20t.img%20%7D%7D"
+    }
+  ],
+  "page_errors": [],
+  "request_failures": [],
+  "runtime_replacements": 17
+}
