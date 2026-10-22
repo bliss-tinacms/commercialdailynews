@@ -156,8 +156,15 @@ export function mutateGenericPage($: cheerio.CheerioAPI, page: any) {
   const values = rendered.children().toArray();
   sourceNodes.forEach((node, index) => {
     const value = values[index];
-    if (!value) return;
+    if (!value) {
+      if (page?.replaceAllContent === true) $(node).remove();
+      return;
+    }
     const target = $(node);
+    if (page?.replaceAllContent === true) {
+      target.replaceWith($(value).clone());
+      return;
+    }
     target.html($(value).html() || '');
     if (/^h[1-6]$/i.test(String(node.tagName || ''))) {
       const id = $(value).attr('id') || referenceSlug(target.text());
