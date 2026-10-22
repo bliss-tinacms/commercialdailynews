@@ -135,6 +135,11 @@ else {
   validateIncidentLedger(processDocument, 'TINA-MIGRATION-GOLD.md');
   const requiredGates = [
     ['Source-release ready', 'source-release and cloud/live acceptance separation'],
+    ['USER-PROVIDED-EVERYTHING-001', 'permanent global prerequisite truth control'],
+    ['user_provided_everything_user_tested=true', 'standing supplied-and-tested declaration'],
+    ['RESOURCE_EXISTENCE=PASS_USER_VERIFIED', 'user-verified resource existence invariant'],
+    ['general `BLOCKED_ON_RESOURCES` status', 'general resource-blocked status prohibition'],
+    ['Only one exact operation may be `AUTH_BLOCKED`', 'exact-operation-only auth blocker rule'],
     ['ZERO-OMISSION SUPPLIED-INPUT RULE', 'top-level supplied-input non-omission rule'],
     ['ASTRO-DEMO-LOCK', 'named exact-demo process gate'],
     ['design/styling is locked; Tina values stay dynamic', 'design-versus-dynamic-content contract'],

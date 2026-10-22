@@ -4,6 +4,16 @@ This is the mandatory release process for turning this repository into a stable,
 
 The protected rollback baseline remains tag `tina-migration-gold-2026-10-17`. Do not move or rewrite that tag. Improvements are committed above it and must pass every applicable gate below before a newer release is described as migration-ready.
 
+## USER-PROVIDED-EVERYTHING-001 — permanent global prerequisite truth
+
+This control is global to every Astro/Tina migration, not site-specific and not limited to Commercial Daily News. Aaisha does not need to repeat it. Before migration starts, she has already personally created, supplied, configured and tested every required repository, project folder, Tina project/client, organization, branch, token, API/API credential, login, account, hosting/service resource, path, demo and other migration input.
+
+Record `user_declared_prerequisites_complete=true`, `user_provided_everything_user_tested=true`, and every supplied input as `RESOURCE_EXISTENCE=PASS_USER_VERIFIED`. The migration must locate and consume the exact supplied inputs from approved durable sources. Keep existence, consumption and current access separate.
+
+A missing shell variable, failed lookup, empty default organization, absent transcript excerpt, context compaction, `401`, `403` or agent reasoning must never become “not provided,” “not created,” “missing,” “nonexistent,” “untested,” a general `BLOCKED_ON_RESOURCES` status, a request for Aaisha to recreate/resend/reconfirm/rotate/replace an input, or authorization to create a substitute. Only one exact operation may be `AUTH_BLOCKED`, and only after every approved source is exhausted; it cannot downgrade `RESOURCE_EXISTENCE=PASS_USER_VERIFIED`.
+
+This rule must be loaded during `ASTRO-TINA-MIGRATION-CORE` CORE GATE 0. Repository validation and controlled negatives must reject its omission and every prohibited absence/replacement inference. Prose-only acknowledgement cannot pass.
+
 > [!CAUTION]
 > **ZERO-OMISSION SUPPLIED-INPUT RULE:** Every credential, service identity, path, repository, branch, folder, endpoint, and deployment value already supplied for a migration must be consumed from the approved tracker or secret store and installed into the exact active and retained rollback runtimes. Never ask for an available value again, never selectively copy only part of an integration, and never call the migration complete from a provider/SDK probe. Section **4A** is a mandatory executable gate: `pnpm runtime:install`, exact target validation, fail-closed startup, and authenticated consumer-path acceptance must all pass. Any missing, placeholder, generic, mismatched, uninstalled, or unverified supplied value is an immediate `BLOCKED` result—no build, restart, cutover, or “done” claim is allowed.
 
