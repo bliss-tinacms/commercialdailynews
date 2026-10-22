@@ -1,5 +1,5 @@
 ---
 export const prerender = false;
 const slug = String(Astro.params.slug || '').replace(/^\/+|\/+$/g, '');
-return Astro.redirect(`/category/${slug}/`, 301);
+return Astro.redirect(`/${slug}/`, 301);
 ---

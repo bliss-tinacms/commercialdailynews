@@ -191,7 +191,7 @@ const teamImages = [
         <div class="cv-l">
           {coverageTopics.map((item, index) => {
             const editItem = editCoverage?.topics?.[index] ?? item;
-            return <a href="/category/featured/" class="cvr"><div class="cvr-n" data-tina-field={tf(editItem, 'number')}>{item.number}</div><div><div class="cvr-t" data-tina-field={tf(editItem, 'title')}>{item.title}</div><p class="cvr-x" data-tina-field={tf(editItem, 'text')}>{item.text}</p></div></a>;
+            return <a href="/featured/" class="cvr"><div class="cvr-n" data-tina-field={tf(editItem, 'number')}>{item.number}</div><div><div class="cvr-t" data-tina-field={tf(editItem, 'title')}>{item.title}</div><p class="cvr-x" data-tina-field={tf(editItem, 'text')}>{item.text}</p></div></a>;
           })}
         </div>
       </div>

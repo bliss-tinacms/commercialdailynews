@@ -51,7 +51,7 @@ export function getCategoryRouteSlug(item: any): string {
 
 export function getCategoryPermalink(item: any): string {
   const slug = getCategoryRouteSlug(item);
-  return slug ? "/category/" + slug + "/" : "/category/";
+  return slug ? "/" + slug + "/" : "/";
 }
 
 export function getPageRouteSlug(item: any): string {

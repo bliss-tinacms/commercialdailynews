@@ -1,13 +1,13 @@
 ---
 import { getBlogPermalink, getBlogRouteSlug, getPageRouteSlug } from '../lib/permalinks';
-import { getBlog, getEditableBlog, getEditableGlobalChrome, getEditablePage, getGlobalChrome, getPublicPage, getUser, listBlogs, listCategories, listPages, listUsers } from '../lib/data';
+import { getBlog, getCategory, getEditableBlog, getEditableCategory, getEditableGlobalChrome, getEditablePage, getGlobalChrome, getPublicPage, getUser, listBlogs, listCategories, listPages, listUsers } from '../lib/data';
 import { referenceSlug, renderAuthority } from '../lib/demo-authority';
-import { mutateAbout, mutateArticle, mutateContact, mutateGenericPage, mutateTeam, sortNewsroom } from '../lib/commercial-renderers';
+import { mutateAbout, mutateArticle, mutateCategory, mutateContact, mutateGenericPage, mutateTeam, sortNewsroom } from '../lib/commercial-renderers';
 
 export const prerender = false;
 const routeSlug = String(Astro.params.slug || '').toLowerCase().replace(/^\/+|\/+$/g, '');
 if (routeSlug === 'our-team') return Astro.redirect('/team/', 301);
-if (routeSlug === 'business' || routeSlug === 'business-economy') return Astro.redirect('/category/business-economy/', 301);
+if (routeSlug === 'business') return Astro.redirect('/business-economy/', 301);
 
 const editing = Boolean(Astro.locals.tinaEdit);
 const chrome = await (editing ? getEditableGlobalChrome() : getGlobalChrome());
@@ -45,6 +45,37 @@ if (pageMatch) {
   }
 }
 
+const categoryDocuments: any[] = await listCategories();
+const categoryRouteParts = routeSlug.split('/').filter(Boolean);
+const categoryPageIndex = categoryRouteParts.indexOf('page');
+const categoryRouteSlug = (categoryPageIndex >= 0 ? categoryRouteParts.slice(0, categoryPageIndex) : categoryRouteParts).join('/');
+const categoryPage = categoryPageIndex >= 0 ? Math.max(1, Number(categoryRouteParts[categoryPageIndex + 1]) || 1) : 1;
+const categoryEntry: any = categoryDocuments.find((item: any) => referenceSlug(item) === categoryRouteSlug || referenceSlug(item?._sys?.filename) === categoryRouteSlug);
+if (categoryEntry) {
+  const perPage = 7;
+  const documentSlug = categoryEntry?._sys?.filename || categoryRouteSlug;
+  const category: any = (await (editing ? getEditableCategory(documentSlug) : getCategory(documentSlug))).data?.category || categoryEntry;
+  const allPosts = await listBlogs();
+  const categoryPosts = allPosts.slice((categoryPage - 1) * perPage, categoryPage * perPage);
+  const seo = category.seo || {};
+  const canonical = categoryPage > 1 ? `/${categoryRouteSlug}/page/${categoryPage}/` : `/${categoryRouteSlug}/`;
+  return renderAuthority({
+    family: 'category',
+    chrome,
+    seo: {
+      title: seo.metaTitle || `${category.title} Articles | ${config?.seo?.title || 'Commercial Daily News'}`,
+      description: seo.metaDescription || category.description || '',
+      canonical,
+      image: seo.ogImage || categoryPosts[0]?.heroImage,
+      ogTitle: seo.ogTitle,
+      ogDescription: seo.ogDescription,
+      noindex: seo.noindex,
+      nofollow: seo.nofollow,
+    },
+    mutate: ($) => mutateCategory($, category, categoryPosts, categoryPage, allPosts.length, perPage),
+  });
+}
+
 const posts = await listBlogs();
 const postMatch: any = posts.find((post: any) => getBlogRouteSlug(post) === routeSlug || post?._sys?.filename === routeSlug);
 if (postMatch) {
@@ -54,7 +85,6 @@ if (postMatch) {
     if (canonical !== `/${routeSlug}/`) return Astro.redirect(canonical, 301);
     const authorSlug = referenceSlug(data.author);
     const user: any = authorSlug ? (await getUser(authorSlug)).data?.user || (typeof data.author === 'object' ? data.author : null) : null;
-    const categoryDocuments: any[] = await listCategories();
     data.categories = (Array.isArray(data.categories) ? data.categories : [data.categories])
       .filter(Boolean)
       .map((category: any) => categoryDocuments.find((candidate: any) => referenceSlug(candidate) === referenceSlug(category)) || category);
@@ -95,7 +125,7 @@ return renderAuthority({
   chrome,
   status: 404,
   mutate: ($) => {
-    $('[data-dc-tpl="49"]').attr('href', '/category/featured/');
+    $('[data-dc-tpl="49"]').attr('href', '/featured/');
   },
   seo: {
     title: 'Page Not Found | Commercial Daily News',

@@ -1,5 +1,6 @@
 import type * as cheerio from 'cheerio';
 import { formatDate, imageUrl, postUrl, referenceLabel, referenceSlug, richBodyHtml } from './demo-authority';
+import { getCategoryPermalink } from './permalinks';
 
 export type UserProfile = { name?: string; role?: string; location?: string; order?: number; avatar?: string; avatarAlt?: string; bio?: string; _sys?: { filename?: string } };
 
@@ -253,7 +254,7 @@ export function mutateCategory($: cheerio.CheerioAPI, category: any, posts: any[
   if (posts[0]) setFeatured($, featured, posts[0], true);
   const selectors = ['59', '67', '75', '83', '91', '99'];
   selectors.forEach((id, index) => { const card = $(`[data-dc-tpl="${id}"]`).first(); if (posts[index + 1]) setPostCard($, card, posts[index + 1], true); });
-  paginate($, $('[data-dc-tpl="107"]').first(), `/category/${referenceSlug(category)}`, currentPage, totalPosts, perPage);
+  paginate($, $('[data-dc-tpl="107"]').first(), `/${referenceSlug(category)}`, currentPage, totalPosts, perPage);
 }
 
 export function mutateAuthor($: cheerio.CheerioAPI, user: UserProfile, posts: any[], currentPage = 1, totalPosts = posts.length, perPage = 7) {
@@ -272,8 +273,26 @@ export function mutateArticle($: cheerio.CheerioAPI, post: any, user: UserProfil
   setText($, '[data-dc-tpl="45"]', post?.title);
   const categoryAnchor = $('[data-dc-tpl="44"]').first();
   const categories = (Array.isArray(post?.categories) ? post.categories : [post?.categories]).filter(Boolean);
-  $('[data-article-category], [data-article-description], [data-article-updated]').remove();
-  if (categories[0]) categoryAnchor.text(referenceLabel(categories[0])).attr('href', `/category/${referenceSlug(categories[0])}/`);
+  $('[data-article-category="secondary"], [data-article-description], [data-article-updated]').remove();
+  if (!categories.length) categoryAnchor.remove();
+  else {
+    categoryAnchor
+      .text(referenceLabel(categories[0]))
+      .attr('href', getCategoryPermalink(categories[0]))
+      .attr('data-article-category', 'primary')
+      .attr('data-category-slug', referenceSlug(categories[0]));
+    let previousBadge = categoryAnchor;
+    categories.slice(1).forEach((category: any) => {
+      const badge = categoryAnchor.clone()
+        .removeAttr('data-dc-tpl')
+        .text(referenceLabel(category))
+        .attr('href', getCategoryPermalink(category))
+        .attr('data-article-category', 'secondary')
+        .attr('data-category-slug', referenceSlug(category));
+      previousBadge.after(badge);
+      previousBadge = badge;
+    });
+  }
   const authorLink = $('[data-dc-tpl="47"]').first().attr('href', `/author/${referenceSlug(user || post?.author)}/`);
   replaceDirectText($, authorLink, user?.name || referenceLabel(post?.author) || 'Commercial Daily News');
   setImage($, $('[data-dc-tpl="48"]').first(), user?.avatar, post?.authorAlt || user?.avatarAlt || user?.name);

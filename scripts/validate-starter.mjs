@@ -154,6 +154,7 @@ else {
     ['Query the verified Tina destination first', 'destination Tina endpoint and identity gate'],
     ['Treat schema changes as migrations', 'schema/lock/cloud migration gate'],
     ['MULTICAT-LOCK', 'multi-category preservation gate'],
+    ['CATEGORY-ROUTE-CONTRACT', 'prefix-free category route and frontend cardinality gate'],
     ['Keep public email addresses ordinary', 'public email anti-obfuscation gate'],
     ['Build and deploy one immutable release', 'atomic immutable deployment gate'],
     ['TINA-FULLCHECK', 'collection-complete fullcheck gate'],

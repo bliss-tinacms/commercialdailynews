@@ -15,7 +15,7 @@ const routes = [
   { path: '/team/', status: 200, family: 'team', text: 'The Commercial Daily News newsroom' },
   { path: '/privacy-policy/', status: 200, family: 'page', text: 'Privacy Policy' },
   { path: '/contact/', status: 200, family: 'contact', text: 'Contact Us' },
-  { path: '/category/business-economy/', status: 200, family: 'category', text: 'Business &amp; Economy' },
+  { path: '/business-economy/', status: 200, family: 'category', text: 'Business &amp; Economy' },
   { path: '/author/patricia-waters/', status: 200, family: 'author', text: 'Patricia Waters' },
   { path: '/why-a-new-warehouse-can-change-a-whole-neighborhood/', status: 200, family: 'article', text: 'Why a new warehouse can change a whole neighborhood' },
   { path: '/demo-lock-missing-route/', status: 404, family: '404', text: 'Page Not Found' },
@@ -92,6 +92,17 @@ async function assertRoutes() {
   requireHtml('/team/', ['data-user-document="richard-sheppard"', 'data-user-document="teresa-fletcher"', 'Richard is the publisher of Commercial Daily News']);
   requireHtml('/contact/', ['action="https://formspree.io/f/xjygnadv"', 'name="_subject"', 'name="message"']);
   requireHtml('/why-a-new-warehouse-can-change-a-whole-neighborhood/', ['Business &amp; Economy', '>Featured<', '#what-arrives-with-a-large-employer', '/what-higher-insurance-costs-mean-for-first-time-buyers/']);
+  const article = load(htmlByPath.get('/why-a-new-warehouse-can-change-a-whole-neighborhood/') || '');
+  const categoryBadges = article('[data-article-category]');
+  if (categoryBadges.length !== 2) throw new Error(`article-category-cardinality:expected-2:got-${categoryBadges.length}`);
+  const categoryHrefs = categoryBadges.toArray().map((node) => article(node).attr('href'));
+  if (JSON.stringify(categoryHrefs) !== JSON.stringify(['/business-economy/', '/featured/'])) {
+    throw new Error(`article-category-routes:${JSON.stringify(categoryHrefs)}`);
+  }
+  const legacyCategory = await fetchPage('/category/business-economy/');
+  if (legacyCategory.status !== 301 || legacyCategory.headers.get('location') !== '/business-economy/') {
+    throw new Error(`legacy-category-redirect:${legacyCategory.status}:${legacyCategory.headers.get('location')}`);
+  }
   const home = htmlByPath.get('/') || '';
   if ((home.match(/data-dc-tpl="69"/g) || []).length !== 3) throw new Error('deep-mapping:/:curated-story-count');
   if ((home.match(/data-dc-tpl="106"/g) || []).length !== 4) throw new Error('deep-mapping:/:homepage-newsroom-slot-count');

@@ -145,13 +145,15 @@ Every schema/model change requires one synchronized change set:
 
 Then run generation, sanitize generated clients, commit/push, wait for Tina Cloud indexing, inspect direct GraphQL field/cardinality parity, and run the normal cloud-checked build. Field renames should be additive first; remove legacy fields only in a separately verified migration.
 
-### 7. Preserve collection-driven relationships and MULTICAT-LOCK
+### 7. Preserve collection-driven relationships, MULTICAT-LOCK and CATEGORY-ROUTE-CONTRACT
 
 - Blog authors reference User records; name, avatar, biography, URL, byline, and author box resolve from the same selected record.
 - Header/footer roles reference Navigation documents through Global Config; runtime code must not depend on fixed filenames.
 - Category choices come from the authenticated paginated Category collection, never a source-code list.
 - If native multi-reference lists fail the active Tina version, store a string list and use a tested custom field that saves canonical `_sys.path`, preserves unavailable selections, supports refresh, and calls `input.onChange`.
-- Open a post with at least two categories, prove both remain selected, save a temporary category assignment, verify public reflection, then restore exactly. Never reduce an existing array to one category.
+- Open a post with at least two categories, prove both remain selected, render one dedicated frontend badge/link per selected category in source order, save a temporary category assignment, verify public reflection, then restore exactly. A one-badge demo controls badge geometry only. Never reduce an existing array to one category with `[0]`, `primaryCategory`, `.find(...)`, `slice(0, 1)`, or hidden `Featured` logic.
+- Preserve the boilerplate/source category URL shape exactly. This migration's canonical category contract is prefix-free `/<category-slug>/` across Astro routes, Tina `ui.router`, permalink helpers, navigation, pagination, article badges, canonical metadata, sitemap and admin shortcuts. `/category/<slug>/` is allowed only as a tested `301` legacy alias.
+- Wire `pnpm category:contract` into starter/site/build validation and run `pnpm category:contract:negative`. The validator must fail on prefix reintroduction, first-item-only frontend rendering, stale category navigation/canonicals, or missing prefix-free route dispatch.
 
 ### 8. Preserve rich-text fidelity
 
@@ -267,6 +269,7 @@ These gates permanently encode failures discovered during real migrations. They 
 43. **REPRESENTATION-SHAPE-MATRIX.** For every Cloud-capable body, execute object-rich-text, repository-string, absent-body and fallback-content cases through the same stable wrapper contract. Require positive DOM/style assertions for each supported shape plus a controlled negative that removes or relocates the wrapper.
 44. **MANDATORY-RELEASE-COMMAND-SEQUENCE.** The release sequence must execute, in order, starter/runtime validation, route and alias tests, production build/start, Tina fullcheck, demo-lock preflight, positive demo lock, controlled-negative demo lock, responsive-menu positive and negative gates, the unscoped full Publisher gate, post-Publisher fetch/inspection, exact final-tip rebuild/deploy, read-only live rechecks and post-cleanup acceptance. Validator-enforced command wiring is required; prose-only commands do not pass.
 45. **NON-OVERRIDABLE-IDENTITY-EVIDENCE.** Preserved tracker/user evidence of Tina organization/project/client/repository/Site URL identity cannot be downgraded by context loss, failed lookups, missing local credentials, `401` or `403`. Run the machine-readable positive and controlled-negative identity preflight before any migration command or status claim. A rules/evidence conflict is an immediate hard stop; reasoning cannot waive the gate.
+46. **CATEGORY-ROUTE-CONTRACT.** Category URL shape is inherited from the boilerplate/source, never reintroduced from a CMS convention. For a prefix-free source, require `/<category-slug>/` in every producer/consumer and allow `/category/<slug>/` only as a tested `301` alias. The same executable gate must prove every backend-selected category renders as its own article badge/link in source order.
 
 The repository validator must require every named marker above. Applicable rules must also be implemented in the executable build, demo-lock, admin/fullcheck, deploy, and cleanup scripts; documentation presence by itself is not release acceptance.
 

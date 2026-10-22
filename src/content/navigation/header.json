@@ -3,35 +3,35 @@
   "items": [
     {
       "label": "U.S. News",
-      "href": "/category/us-news/"
+      "href": "/us-news/"
     },
     {
       "label": "World News",
-      "href": "/category/world-news/"
+      "href": "/world-news/"
     },
     {
       "label": "Business",
-      "href": "/category/business-economy/"
+      "href": "/business-economy/"
     },
     {
       "label": "Science",
-      "href": "/category/science-technology/"
+      "href": "/science-technology/"
     },
     {
       "label": "Lifestyle",
-      "href": "/category/lifestyle/"
+      "href": "/lifestyle/"
     },
     {
       "label": "Health",
-      "href": "/category/health/"
+      "href": "/health/"
     },
     {
       "label": "Real Estate",
-      "href": "/category/real-estate/"
+      "href": "/real-estate/"
     },
     {
       "label": "Featured",
-      "href": "/category/featured/"
+      "href": "/featured/"
     }
   ]
 }
