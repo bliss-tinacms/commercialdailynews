@@ -14,6 +14,7 @@ const fixtureFiles = [
   'src/pages/blog/category/[...slug].astro',
   'tina/collections/category.ts',
   'package.json',
+  '.github/workflows/category-contract.yml',
 ];
 const fixtureDirs = ['src/content/navigation', 'src/content/category'];
 
@@ -91,6 +92,11 @@ const cases = [
     name: 'destination-build-wiring-removed',
     expected: 'category-package-command-invalid:category:contract',
     apply: (fixture) => mutate(fixture, 'package.json', 'node scripts/validate-category-contract.mjs', 'node -e \\"process.exit(0)\\"'),
+  },
+  {
+    name: 'repository-ci-wiring-removed',
+    expected: 'category-ci-wiring-missing:pnpm category:contract:negative',
+    apply: (fixture) => mutate(fixture, '.github/workflows/category-contract.yml', 'pnpm category:contract:negative', 'pnpm test'),
   },
 ];
 

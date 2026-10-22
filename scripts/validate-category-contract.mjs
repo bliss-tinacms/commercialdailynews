@@ -87,6 +87,11 @@ if (packageJson) {
   }
 }
 
+const ciWorkflow = read('.github/workflows/category-contract.yml');
+for (const required of ['push:', 'pull_request:', 'pnpm category:contract', 'pnpm category:contract:negative']) {
+  if (!ciWorkflow.includes(required)) fail(`category-ci-wiring-missing:${required}`);
+}
+
 const result = {
   schema: 'commercial-category-contract-v1',
   status: failures.length ? 'FAIL' : 'PASS',
