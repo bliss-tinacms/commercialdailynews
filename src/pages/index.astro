@@ -1,12 +1,13 @@
 ---
-import { getGlobalChrome, getPublicPage, listUsers } from '../lib/data';
+import { getEditableGlobalChrome, getEditablePage, getGlobalChrome, getPublicPage, listUsers } from '../lib/data';
 import { renderAuthority } from '../lib/demo-authority';
 import { mutateHome, sortNewsroom } from '../lib/commercial-renderers';
 
 export const prerender = false;
-const data: any = (await getPublicPage('home')).data?.page;
+const editing = Boolean(Astro.locals.tinaEdit);
+const data: any = (await (editing ? getEditablePage('home') : getPublicPage('home'))).data?.page;
 if (!data) return new Response('Not Found', { status: 404 });
-const chrome = await getGlobalChrome();
+const chrome = await (editing ? getEditableGlobalChrome() : getGlobalChrome());
 const config: any = chrome.config;
 const users = sortNewsroom(await listUsers());
 const seo = data.seo || {};

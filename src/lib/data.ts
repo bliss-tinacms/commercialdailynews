@@ -18,7 +18,7 @@ import matter from 'gray-matter';
 import type { TinaRichTextContent } from '@tinacms/astro';
 import { requestWithMetadata } from '@tinacms/astro/data';
 import client from '../../tina/__generated__/client';
-import { BlogDocument, CategoryDocument, ConfigDocument, PageDocument, UserDocument } from '../../tina/__generated__/types';
+import { BlogDocument, CategoryDocument, ConfigDocument, NavigationDocument, PageDocument, UserDocument } from '../../tina/__generated__/types';
 
 function localContentRoots() {
 	const roots = [
@@ -349,7 +349,19 @@ export const getEditableConfig = async () => {
 	if (!generated?.data?.config || !generated.query || !generated.variables) {
 		throw new Error('Global Config editor query returned no authoritative Tina document');
 	}
-	return requestWithMetadata(generated);
+	return requestWithMetadata(generated, { priority: 'secondary' });
+};
+
+export const getEditableNavigation = async (slug: string) => {
+	const relativePath = slug.endsWith('.json') ? slug : `${slug}.json`;
+	const live = await fetchLiveTinaResult<{ navigation: any }>(NavigationDocument, { relativePath });
+	if (live?.data?.navigation) return requestWithMetadata(Promise.resolve(live), { priority: 'secondary' });
+
+	const generated = await client.queries.navigation({ relativePath });
+	if (!generated?.data?.navigation || !generated.query || !generated.variables) {
+		throw new Error(`Navigation editor query returned no authoritative Tina document: ${relativePath}`);
+	}
+	return requestWithMetadata(generated, { priority: 'secondary' });
 };
 
 
@@ -399,6 +411,22 @@ export async function getGlobalChrome() {
 	const [header, footer] = await Promise.all([
 		getHeaderNavigation(config),
 		getFooterNavigation(config),
+	]);
+	return {
+		config,
+		headerNavigation: header.data?.navigation ?? null,
+		footerNavigation: footer.data?.navigation ?? null,
+	};
+}
+
+export async function getEditableGlobalChrome() {
+	const configResult = await getEditableConfig();
+	const config = configResult.data?.config ?? {};
+	const headerPath = navigationRelativePath(config?.headerNavigation) || 'header.json';
+	const footerPath = navigationRelativePath(config?.footerNavigation) || 'footer.json';
+	const [header, footer] = await Promise.all([
+		getEditableNavigation(headerPath),
+		getEditableNavigation(footerPath),
 	]);
 	return {
 		config,

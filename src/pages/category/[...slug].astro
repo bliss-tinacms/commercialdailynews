@@ -1,5 +1,5 @@
 ---
-import { getCategory, getGlobalChrome, listBlogs, listCategories } from '../../lib/data';
+import { getCategory, getEditableCategory, getEditableGlobalChrome, getGlobalChrome, listBlogs, listCategories } from '../../lib/data';
 import { referenceSlug, renderAuthority } from '../../lib/demo-authority';
 import { mutateCategory } from '../../lib/commercial-renderers';
 
@@ -13,14 +13,15 @@ const categories = await listCategories();
 const categoryEntry: any = categories.find((item: any) => referenceSlug(item) === slug || referenceSlug(item?._sys?.filename) === slug);
 if (!categoryEntry) return new Response('Not Found', { status: 404 });
 const documentSlug = categoryEntry?._sys?.filename || slug;
-const category: any = (await getCategory(documentSlug)).data?.category || categoryEntry;
+const editing = Boolean(Astro.locals.tinaEdit);
+const category: any = (await (editing ? getEditableCategory(documentSlug) : getCategory(documentSlug))).data?.category || categoryEntry;
 // The supplied category authority is a seven-story newsroom ledger. Preserve
 // its card count and ordering and inject the current Tina newsroom feed into
 // those immutable wrappers; the category document still owns the archive
 // identity, title, SEO, and editable description.
 const allPosts = await listBlogs();
 const posts = allPosts.slice((page - 1) * perPage, page * perPage);
-const chrome = await getGlobalChrome();
+const chrome = await (editing ? getEditableGlobalChrome() : getGlobalChrome());
 const config: any = chrome.config;
 const seo = category.seo || {};
 const canonical = page > 1 ? `/category/${slug}/page/${page}/` : `/category/${slug}/`;

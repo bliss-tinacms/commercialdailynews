@@ -1,6 +1,6 @@
 ---
 import { getBlogPermalink, getBlogRouteSlug, getPageRouteSlug } from '../lib/permalinks';
-import { getBlog, getGlobalChrome, getPublicPage, getUser, listBlogs, listCategories, listPages, listUsers } from '../lib/data';
+import { getBlog, getEditableBlog, getEditableGlobalChrome, getEditablePage, getGlobalChrome, getPublicPage, getUser, listBlogs, listCategories, listPages, listUsers } from '../lib/data';
 import { referenceSlug, renderAuthority } from '../lib/demo-authority';
 import { mutateAbout, mutateArticle, mutateContact, mutateGenericPage, mutateTeam, sortNewsroom } from '../lib/commercial-renderers';
 
@@ -9,13 +9,14 @@ const routeSlug = String(Astro.params.slug || '').toLowerCase().replace(/^\/+|\/
 if (routeSlug === 'our-team') return Astro.redirect('/team/', 301);
 if (routeSlug === 'business' || routeSlug === 'business-economy') return Astro.redirect('/category/business-economy/', 301);
 
-const chrome = await getGlobalChrome();
+const editing = Boolean(Astro.locals.tinaEdit);
+const chrome = await (editing ? getEditableGlobalChrome() : getGlobalChrome());
 const config: any = chrome.config;
 const pages = await listPages();
 const pageMatch: any = pages.find((page: any) => getPageRouteSlug(page) === routeSlug || page?._sys?.filename === routeSlug);
 
 if (pageMatch) {
-  const data: any = (await getPublicPage(pageMatch._sys.filename)).data?.page;
+  const data: any = (await (editing ? getEditablePage(pageMatch._sys.filename) : getPublicPage(pageMatch._sys.filename))).data?.page;
   if (data) {
     const seo = data.seo || {};
     const canonical = `/${routeSlug}/`;
@@ -47,7 +48,7 @@ if (pageMatch) {
 const posts = await listBlogs();
 const postMatch: any = posts.find((post: any) => getBlogRouteSlug(post) === routeSlug || post?._sys?.filename === routeSlug);
 if (postMatch) {
-  const data: any = (await getBlog(postMatch._sys.filename)).data?.blog;
+  const data: any = (await (editing ? getEditableBlog(postMatch._sys.filename) : getBlog(postMatch._sys.filename))).data?.blog;
   if (data) {
     const canonical = getBlogPermalink(data) + '/';
     if (canonical !== `/${routeSlug}/`) return Astro.redirect(canonical, 301);
