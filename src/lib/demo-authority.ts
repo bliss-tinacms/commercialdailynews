@@ -75,18 +75,18 @@ function navigationItems(value: any): NavItem[] {
 }
 
 function replaceLinks($: cheerio.CheerioAPI, root: cheerio.Cheerio<any>, items: NavItem[]) {
-  const prototype = root.children('a').first().clone();
-  root.children('a, .cdn-submenu').remove();
-  for (const item of items) {
-    const link = prototype.length ? prototype.clone() : $('<a>');
-    link.empty().text(item.label).attr('href', item.href);
-    root.append(link);
+  const links = root.children('a').toArray();
+  root.children('.cdn-submenu').remove();
+  links.forEach((node, index) => {
+    const item = items[index];
+    if (!item) return;
+    const link = $(node).text(item.label).attr('href', item.href);
     if (item.children.length) {
       const submenu = $('<div class="cdn-submenu">');
       for (const child of item.children) submenu.append($('<a>').text(child.label).attr('href', child.href));
-      root.append(submenu);
+      link.after(submenu);
     }
-  }
+  });
 }
 
 function installResponsiveHeader($: cheerio.CheerioAPI, items: NavItem[]) {

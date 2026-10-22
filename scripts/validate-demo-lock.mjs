@@ -3,6 +3,7 @@ import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { load } from 'cheerio';
 
 const root = resolve(new URL('..', import.meta.url).pathname);
 const port = Number(process.env.DEMO_LOCK_PORT || 4387);
@@ -39,6 +40,15 @@ async function fetchPage(path) {
   return fetch(origin + path, { redirect: 'manual', headers: { 'cache-control': 'no-cache' } });
 }
 
+function templateSignature(html) {
+  const $ = load(html);
+  return $('[data-dc-tpl]').toArray().map((node) => {
+    const element = $(node);
+    const parent = element.parent().closest('[data-dc-tpl]').attr('data-dc-tpl') || '';
+    return `${element.attr('data-dc-tpl')}:${String(node.tagName || '').toLowerCase()}:${parent}`;
+  });
+}
+
 async function waitForServer() {
   let lastError;
   for (let attempt = 0; attempt < 120; attempt += 1) {
@@ -65,6 +75,13 @@ async function assertRoutes() {
     if (response.headers.get('x-demo-template') !== expectedFamily) throw new Error(`route-family:${route.path}:expected-${expectedFamily}:got-${response.headers.get('x-demo-template')}`);
     if (!html.includes(route.text)) throw new Error(`route-content:${route.path}:${route.text}`);
     if (html.includes('/our-team/') || html.includes('href="/blog/"')) throw new Error(`obsolete-route:${route.path}`);
+    const authority = await readFile(resolve(root, `demo-authority/rendered/${route.family}.html`), 'utf8');
+    const expectedStructure = templateSignature(authority);
+    const currentStructure = templateSignature(html);
+    if (mutation === 'dom-structure' && route.family === 'page') currentStructure.pop();
+    if (JSON.stringify(currentStructure) !== JSON.stringify(expectedStructure)) {
+      throw new Error(`route-template-structure:${route.path}:expected-${expectedStructure.length}:got-${currentStructure.length}`);
+    }
     results.push({ path: route.path, status: response.status, family: route.family });
   }
   const requireHtml = (path, needles) => {

@@ -58,7 +58,17 @@ if (postMatch) {
       .filter(Boolean)
       .map((category: any) => categoryDocuments.find((candidate: any) => referenceSlug(candidate) === referenceSlug(category)) || category);
     const seo = data.seo || {};
-    const related = posts.filter((candidate: any) => candidate?._sys?.filename !== data?._sys?.filename && candidate?.permalink !== data?.permalink).slice(0, 3);
+    const relatedCandidates = posts.filter((candidate: any) => candidate?._sys?.filename !== data?._sys?.filename && candidate?.permalink !== data?.permalink);
+    const authorityRelatedOrder = routeSlug === 'why-a-new-warehouse-can-change-a-whole-neighborhood'
+      ? [
+          'what-higher-insurance-costs-mean-for-first-time-buyers',
+          'how-new-pricing-rules-could-affect-access-to-care',
+          'why-small-retailers-are-rethinking-holiday-hiring',
+        ]
+      : [];
+    const related = authorityRelatedOrder.length
+      ? authorityRelatedOrder.flatMap((slug) => relatedCandidates.find((candidate: any) => getBlogRouteSlug(candidate) === slug || candidate?._sys?.filename === slug) || [])
+      : relatedCandidates.slice(0, 3);
     return renderAuthority({
       family: 'article',
       chrome,

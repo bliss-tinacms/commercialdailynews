@@ -5,6 +5,7 @@ const cases = [
   { mutation: 'route-status', expected: 'route-status:/:expected-418:got-200' },
   { mutation: 'route-family', expected: 'route-family:/:expected-broken-index:got-index' },
   { mutation: 'dynamic-input', expected: 'dynamic-input-not-rendered:INTENTIONAL-MISSING-MARKER' },
+  { mutation: 'dom-structure', expected: 'route-template-structure:/privacy-policy/:expected-64:got-63' },
 ];
 const results = [];
 for (let index = 0; index < cases.length; index += 1) {

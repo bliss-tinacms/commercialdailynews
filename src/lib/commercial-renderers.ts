@@ -9,6 +9,11 @@ export function sortNewsroom(users: UserProfile[]): UserProfile[] {
 function setText($: cheerio.CheerioAPI, selector: string, value: unknown) {
   if (value !== undefined && value !== null && String(value).trim()) $(selector).first().text(String(value));
 }
+function replaceDirectText($: cheerio.CheerioAPI, element: cheerio.Cheerio<any>, value: unknown) {
+  if (value === undefined || value === null || !String(value).trim()) return;
+  element.contents().filter((_index, node) => node.type === 'text').remove();
+  element.append(String(value));
+}
 function demoSections(page: any): any[] { return Array.isArray(page?.demoSections) ? page.demoSections : []; }
 function setImage($: cheerio.CheerioAPI, element: cheerio.Cheerio<any>, src: unknown, alt: unknown) {
   if (src) element.attr('src', imageUrl(src));
@@ -52,7 +57,7 @@ export function mutateHome($: cheerio.CheerioAPI, page: any, _posts: any[], user
   const storyCards = $('[data-dc-tpl="69"]').toArray();
   storyCards.forEach((node, index) => {
     const item = curated[index];
-    if (!item) { $(node).remove(); return; }
+    if (!item) return;
     const card = $(node);
     card.attr('href', postUrl(item.post));
     setImage($, card.find('img').first(), item.image, item.imageAlt);
@@ -67,7 +72,7 @@ export function mutateHome($: cheerio.CheerioAPI, page: any, _posts: any[], user
   const cards = $('[data-dc-tpl="106"]').toArray();
   cards.forEach((node, index) => {
     const user = ordered[index];
-    if (!user) { $(node).remove(); return; }
+    if (!user) return;
     const card = $(node);
     card.attr('href', `/author/${referenceSlug(user)}/`).attr('data-user-document', user._sys?.filename || referenceSlug(user));
     setImage($, card.find('img').first(), user.avatar, user.avatarAlt || user.name);
@@ -126,7 +131,7 @@ export function mutateTeam($: cheerio.CheerioAPI, page: any, users: UserProfile[
   const cards = teamCards($);
   cards.forEach((card, index) => {
     const user = ordered[index];
-    if (!user) { card.remove(); return; }
+    if (!user) return;
     const heading = card.find('h2, h3').first();
     heading.text(user.name || '');
     setImage($, card.find('img').first(), user.avatar, user.avatarAlt || user.name);
@@ -144,8 +149,20 @@ export function mutateGenericPage($: cheerio.CheerioAPI, page: any) {
   const pageBody = typeof page?.body === 'string' ? (page.body.trim() ? page.body : null) : page?.body;
   const body = pageBody || contentBlock?.body;
   if (!main.length || !body) return;
+  const sourceNodes = main.children().toArray();
   const prototypes: Record<string, string | undefined> = { p: main.find('p').first().attr('style'), h2: main.find('h2').first().attr('style'), h3: main.find('h2').first().attr('style'), blockquote: main.find('blockquote').first().attr('style') };
-  main.html(richBodyHtml(body, prototypes));
+  const rendered = $('<div>').html(richBodyHtml(body, prototypes));
+  const values = rendered.children().toArray();
+  sourceNodes.forEach((node, index) => {
+    const value = values[index];
+    if (!value) return;
+    const target = $(node);
+    target.html($(value).html() || '');
+    if (/^h[1-6]$/i.test(String(node.tagName || ''))) {
+      const id = $(value).attr('id') || referenceSlug(target.text());
+      if (id) target.attr('id', id);
+    }
+  });
 }
 
 function validFormspree(value: unknown): string {
@@ -184,7 +201,7 @@ export function mutateContact($: cheerio.CheerioAPI, page: any, config: any) {
   const requests = Array.isArray(page?.contactRequests) ? page.contactRequests : [];
   const requestCards = $('[data-dc-tpl="82"], [data-dc-tpl="87"], [data-dc-tpl="92"]').toArray();
   requestCards.forEach((node, index) => {
-    const item = requests[index]; if (!item) { $(node).remove(); return; }
+    const item = requests[index]; if (!item) return;
     const card = $(node).attr('href', item.link || '#');
     card.find('h3').first().text(item.title || '');
     card.find('p').first().text(item.description || '');
@@ -233,9 +250,9 @@ function paginate($: cheerio.CheerioAPI, nav: cheerio.Cheerio<any>, base: string
 export function mutateCategory($: cheerio.CheerioAPI, category: any, posts: any[], currentPage = 1, totalPosts = posts.length, perPage = 7) {
   setText($, '[data-dc-tpl="44"]', category?.title);
   const featured = $('[data-dc-tpl="46"]').first();
-  if (posts[0]) setFeatured($, featured, posts[0], true); else featured.remove();
+  if (posts[0]) setFeatured($, featured, posts[0], true);
   const selectors = ['59', '67', '75', '83', '91', '99'];
-  selectors.forEach((id, index) => { const card = $(`[data-dc-tpl="${id}"]`).first(); if (posts[index + 1]) setPostCard($, card, posts[index + 1], true); else card.remove(); });
+  selectors.forEach((id, index) => { const card = $(`[data-dc-tpl="${id}"]`).first(); if (posts[index + 1]) setPostCard($, card, posts[index + 1], true); });
   paginate($, $('[data-dc-tpl="107"]').first(), `/category/${referenceSlug(category)}`, currentPage, totalPosts, perPage);
 }
 
@@ -245,8 +262,8 @@ export function mutateAuthor($: cheerio.CheerioAPI, user: UserProfile, posts: an
   setText($, '[data-dc-tpl="48"]', user?.bio);
   setImage($, $('[data-dc-tpl="44"]').first(), user?.avatar, user?.avatarAlt || user?.name);
   const featured = $('[data-dc-tpl="50"]').first();
-  if (posts[0]) setFeatured($, featured, posts[0], false); else featured.remove();
-  ['60', '65', '70', '75', '80', '85'].forEach((id, index) => { const card = $(`[data-dc-tpl="${id}"]`).first(); if (posts[index + 1]) setPostCard($, card, posts[index + 1], false); else card.remove(); });
+  if (posts[0]) setFeatured($, featured, posts[0], false);
+  ['60', '65', '70', '75', '80', '85'].forEach((id, index) => { const card = $(`[data-dc-tpl="${id}"]`).first(); if (posts[index + 1]) setPostCard($, card, posts[index + 1], false); });
   paginate($, $('[data-dc-tpl="90"]').first(), `/author/${referenceSlug(user)}`, currentPage, totalPosts, perPage);
   $('[data-dc-tpl="42"]').attr('data-user-document', user?._sys?.filename || referenceSlug(user));
 }
@@ -255,38 +272,35 @@ export function mutateArticle($: cheerio.CheerioAPI, post: any, user: UserProfil
   setText($, '[data-dc-tpl="45"]', post?.title);
   const categoryAnchor = $('[data-dc-tpl="44"]').first();
   const categories = (Array.isArray(post?.categories) ? post.categories : [post?.categories]).filter(Boolean);
-  categoryAnchor.siblings('[data-article-category]').remove();
-  categories.forEach((category: any, index: number) => {
-    const anchor = index === 0 ? categoryAnchor : categoryAnchor.clone().attr('data-article-category', '');
-    anchor.text(referenceLabel(category)).attr('href', `/category/${referenceSlug(category)}/`);
-    if (index > 0) anchor.insertAfter(categoryAnchor);
-  });
-  $('[data-dc-tpl="47"]').text(user?.name || referenceLabel(post?.author) || 'Commercial Daily News').attr('href', `/author/${referenceSlug(user || post?.author)}/`);
+  $('[data-article-category], [data-article-description], [data-article-updated]').remove();
+  if (categories[0]) categoryAnchor.text(referenceLabel(categories[0])).attr('href', `/category/${referenceSlug(categories[0])}/`);
+  const authorLink = $('[data-dc-tpl="47"]').first().attr('href', `/author/${referenceSlug(user || post?.author)}/`);
+  replaceDirectText($, authorLink, user?.name || referenceLabel(post?.author) || 'Commercial Daily News');
   setImage($, $('[data-dc-tpl="48"]').first(), user?.avatar, post?.authorAlt || user?.avatarAlt || user?.name);
   setText($, '[data-dc-tpl="49"]', formatDate(post?.pubDate));
   setText($, '[data-dc-tpl="50"]', post?.readTime || '');
   setImage($, $('[data-dc-tpl="54"]').first(), post?.heroImage, post?.heroImageAlt || post?.title);
   const body = $('[data-dc-tpl="79"]').first();
-  const sourceStyles = body.children().toArray().map((node) => ({
-    tag: String(node.tagName || '').toLowerCase(),
-    style: $(node).attr('style'),
-  }));
-  const standardParagraphStyle = sourceStyles.find((entry, index) => entry.tag === 'p' && index > 0)?.style;
+  const sourceNodes = body.children().toArray();
+  const standardParagraph = sourceNodes.find((node, index) => String(node.tagName || '').toLowerCase() === 'p' && index > 0);
   const prototypes: Record<string, string | undefined> = {
-    p: standardParagraphStyle || body.find('p').first().attr('style'),
+    p: standardParagraph ? $(standardParagraph).attr('style') : body.find('p').first().attr('style'),
     h2: body.find('h2').first().attr('style'),
     h3: body.find('h2').first().attr('style'),
     blockquote: body.find('blockquote').first().attr('style'),
   };
   if (post?.body) {
-    body.html(richBodyHtml(post.body, prototypes));
-    body.children().each((index, node) => {
-      const tag = String(node.tagName || '').toLowerCase();
-      const exact = sourceStyles[index];
-      const style = exact?.tag === tag
-        ? exact.style
-        : sourceStyles.find((entry, sourceIndex) => entry.tag === tag && (tag !== 'p' || sourceIndex > 0))?.style;
-      if (style) $(node).attr('style', style);
+    const rendered = $('<div>').html(richBodyHtml(post.body, prototypes));
+    const values = rendered.children().toArray();
+    sourceNodes.forEach((node, index) => {
+      const value = values[index];
+      if (!value) return;
+      const target = $(node);
+      target.html($(value).html() || '');
+      if (/^h[1-6]$/i.test(String(node.tagName || ''))) {
+        const id = $(value).attr('id') || referenceSlug(target.text());
+        if (id) target.attr('id', id);
+      }
     });
   }
   setText($, '[data-dc-tpl="97"]', user?.name);
@@ -295,14 +309,20 @@ export function mutateArticle($: cheerio.CheerioAPI, post: any, user: UserProfil
   const authorBox = $('[data-dc-tpl="93"]').first();
   if (authorBox.length) body.after(authorBox);
   const headings = body.find('h2').toArray();
-  const toc = $('[data-dc-tpl="103"]').first().empty();
-  headings.forEach((node, index) => {
+  const toc = $('[data-dc-tpl="103"]').first();
+  const tocRows = toc.children('li').toArray();
+  headings.slice(0, tocRows.length).forEach((node, index) => {
     const title = $(node).text().trim(); const id = $(node).attr('id') || referenceSlug(title); $(node).attr('id', id);
-    toc.append(`<li style="border-bottom:1px solid rgba(14,31,61,.08)"><a href="#${id}" style="display:flex;gap:12px;padding:10px 0;font-size:16px;line-height:1.4;color:#0E1F3D"><span style="font-family:Newsreader,serif;font-weight:700;color:#C9961E">${index + 1}.</span><span>${$('<span>').text(title).html()}</span></a></li>`);
+    const row = $(tocRows[index]);
+    const link = row.find('a').first().attr('href', `#${id}`);
+    const spans = link.find('span').toArray();
+    if (spans[0]) $(spans[0]).text(`${index + 1}.`);
+    if (spans[1]) $(spans[1]).text(title);
   });
+  $('head').append(`<style id="cdn-article-mobile-order">@media(max-width:959px){[data-dc-tpl="51"]{flex-direction:column!important}[data-dc-tpl="52"],[data-dc-tpl="99"]{display:contents!important}[data-dc-tpl="53"]{order:1}[data-dc-tpl="101"]{order:2}[data-dc-tpl="79"]{order:3}[data-dc-tpl="93"]{order:4}[data-dc-tpl="124"]{order:5}}</style>`);
   const relatedCards = $('[data-dc-tpl="133"], [data-dc-tpl="137"], [data-dc-tpl="141"]').toArray();
   relatedCards.forEach((node, index) => {
-    const item = related[index]; if (!item) { $(node).remove(); return; }
+    const item = related[index]; if (!item) return;
     const card = $(node).attr('href', postUrl(item));
     setImage($, card.find('img').first(), item.heroImage, item.heroImageAlt || item.title);
     const spans = card.find('span').toArray();
