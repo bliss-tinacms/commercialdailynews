@@ -71,7 +71,7 @@ export default defineConfig({
 	output: 'server',
 	adapter: await getAdapter(),
 	redirects: { '/home': '/' },
-	integrations: [mdx(), sitemap(), icon(), tina()],
+	integrations: [mdx(), sitemap(), icon(), tina({ middlewareOrder: 'post' })],
 	build: {
 		// Inline the (~10 KiB) bundled CSS into a <style> in <head> instead of a
 		// separate render-blocking <link>. Astro's default ('auto') only inlines

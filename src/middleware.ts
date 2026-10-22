@@ -58,6 +58,23 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const { request, url } = context;
   const method = request.method.toUpperCase();
 
+  // cPanel/LiteSpeed strips Sec-Fetch-Dest before Passenger sees the request.
+  // Tina normally uses that header to identify the admin preview iframe. Turn
+  // the first same-origin admin preview navigation into Tina's explicit edit
+  // marker; the Tina integration middleware (configured as `post`) then owns
+  // form collection, bridge injection, and the short-lived edit cookie.
+  const referer = request.headers.get('referer') ?? '';
+  const fromSameOriginAdmin =
+    referer === `${url.origin}/admin` ||
+    referer === `${url.origin}/admin/` ||
+    referer.startsWith(`${url.origin}/admin/?`) ||
+    referer.startsWith(`${url.origin}/admin/index.html`);
+  if (method === 'GET' && fromSameOriginAdmin && url.searchParams.get('tina-edit') !== '1') {
+    const editUrl = new URL(url);
+    editUrl.searchParams.set('tina-edit', '1');
+    return context.redirect(editUrl.toString(), 302);
+  }
+
   // Keep POST/API/admin/asset requests out of redirect management.
   if (method !== 'GET' && method !== 'HEAD') return next();
   if (
