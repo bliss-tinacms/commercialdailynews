@@ -54,6 +54,12 @@ Record and pass these items before editing implementation code:
 
 If any item is unresolved, report `BLOCKED` and investigate or ask. Never silently switch to approximation or invention.
 
+### 1A. DEMO-CARDINALITY-MULTICAT-EXCEPTION — explicit ASTRO-DEMO-LOCK precedence
+
+`MULTICAT-LOCK` outranks `ASTRO-DEMO-LOCK` cardinality. The demo category count never controls frontend cardinality. A demo showing one category locks the structure, classes, styling, geometry and responsive treatment of one repeated category badge; it does not authorize one-category-only rendering.
+
+Repeat the demo category badge once for every saved category in exact backend order. The Tina category array controls count, order, labels, slugs and hrefs. This repetition is required dynamic binding, not a DOM/source-parity violation. `ASTRO-DEMO-LOCK` may never be cited to justify `categories[0]`, `primaryCategory`, `.find(...)`, `.slice(0, 1)`, hidden remainder categories or any equivalent first-item-only projection. A committed two-or-more-category fixture and exact backend/public tuple proof are mandatory.
+
 ### 2. Keep visible output Tina-driven
 
 - No hardcoded titles, descriptions, people, bylines, biographies, categories, menus, logos, contact details, SEO values, article cards, archive lists, or sitemap entries.

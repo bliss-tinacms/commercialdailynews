@@ -25,6 +25,7 @@ const requiredControls = [
   'RESPONSIVE-NAVIGATION-INTERACTION-CONTRACT', 'FRONTEND-ROUTE-RESOLUTION', 'CANONICAL-ALIAS-PARITY',
   'DETERMINISTIC-ADMIN-LOCATORS', 'CATEGORY-ISLAND-EDITABILITY', 'REPRESENTATION-SHAPE-MATRIX',
   'MANDATORY-RELEASE-COMMAND-SEQUENCE',
+  'DEMO-CARDINALITY-MULTICAT-EXCEPTION',
   'NON-OVERRIDABLE-IDENTITY-EVIDENCE',
 ];
 const incidentIds = Array.from({ length: 66 }, (_, index) => `HNT-${String(index + 1).padStart(3, '0')}`);
@@ -72,19 +73,35 @@ markRequired(manifestPath, 'authority-manifest');
 markRequired(validatorPath, 'positive-browser-validator');
 markRequired(negativePath, 'controlled-negative-suite');
 
+const multicatExceptionClauses = [
+  'MULTICAT-LOCK` outranks `ASTRO-DEMO-LOCK` cardinality',
+  'The demo category count never controls frontend cardinality',
+  'Repeat the demo category badge once for every saved category in exact backend order',
+  'The Tina category array controls count, order, labels, slugs and hrefs',
+  'not a DOM/source-parity violation',
+  '`categories[0]`',
+  'two-or-more-category fixture',
+];
+
 let controlsPresent = 0;
 if (existsSync(lockPath)) {
   let lock = readFileSync(lockPath, 'utf8');
   if (mutation === 'missing-control') lock = lock.replaceAll(requiredControls[0], 'REMOVED-CONTROL');
+  if (mutation === 'missing-multicat-exception-clause') lock = lock.replace('The demo category count never controls frontend cardinality', 'REMOVED-MULTICAT-EXCEPTION-CLAUSE');
   if (mutation === 'missing-incident-ledger-row') lock = lock.replace('| HNT-001 |', '| REMOVED-INCIDENT |');
   const controlSection = lock.split('## Mandatory controls')[1]?.split('## Transport gates inherited from GOLD')[0] || '';
   for (const control of requiredControls) {
     if (!controlSection.includes(control)) failures.push(`missing-control:${control}`);
     else controlsPresent += 1;
   }
+  for (const clause of multicatExceptionClauses) if (!lock.includes(clause)) failures.push(`missing-multicat-exception-clause:ASTRO-DEMO-LOCK.md:${clause}`);
   validateIncidentLedger(lock, 'ASTRO-DEMO-LOCK.md');
 }
-if (existsSync(goldPath)) validateIncidentLedger(readFileSync(goldPath, 'utf8'), 'TINA-MIGRATION-GOLD.md');
+if (existsSync(goldPath)) {
+  const gold = readFileSync(goldPath, 'utf8');
+  for (const clause of multicatExceptionClauses) if (!gold.includes(clause)) failures.push(`missing-multicat-exception-clause:TINA-MIGRATION-GOLD.md:${clause}`);
+  validateIncidentLedger(gold, 'TINA-MIGRATION-GOLD.md');
+}
 
 let fixtureManifestSha256 = null;
 let checkedFixtures = 0;
