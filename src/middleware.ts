@@ -64,13 +64,21 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // marker; the Tina integration middleware (configured as `post`) then owns
   // form collection, bridge injection, and the short-lived edit cookie.
   const referer = request.headers.get('referer') ?? '';
-  const fromSameOriginAdmin =
-    referer === `${url.origin}/admin` ||
-    referer === `${url.origin}/admin/` ||
-    referer.startsWith(`${url.origin}/admin/?`) ||
-    referer.startsWith(`${url.origin}/admin/index.html`);
-  if (method === 'GET' && fromSameOriginAdmin && url.searchParams.get('tina-edit') !== '1') {
-    const editUrl = new URL(url);
+  let fromSameSiteAdmin = false;
+  try {
+    const refererUrl = new URL(referer);
+    const publicUrl = new URL(getPublicOrigin(request, url));
+    const normalizeHost = (host: string) => host.toLowerCase().replace(/^www\./, '');
+    fromSameSiteAdmin =
+      normalizeHost(refererUrl.hostname) === normalizeHost(publicUrl.hostname) &&
+      (refererUrl.pathname === '/admin' ||
+        refererUrl.pathname === '/admin/' ||
+        refererUrl.pathname === '/admin/index.html');
+  } catch (_error) {
+    fromSameSiteAdmin = false;
+  }
+  if (method === 'GET' && fromSameSiteAdmin && url.searchParams.get('tina-edit') !== '1') {
+    const editUrl = new URL(`${url.pathname}${url.search}`, getPublicOrigin(request, url));
     editUrl.searchParams.set('tina-edit', '1');
     return context.redirect(editUrl.toString(), 302);
   }
