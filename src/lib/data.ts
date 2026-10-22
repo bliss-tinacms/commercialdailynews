@@ -217,16 +217,16 @@ function tinaApiToken() {
 
 
 function tinaProxyEndpoints() {
-	// Do not SSR-fetch this same Passenger app's public /tina-content-proxy.
-	// Self-fetching the live domain during page render can deadlock/timeout under cPanel Passenger.
-	// Public pages must still prefer saved Tina backend data over deployed local fallbacks, so
-	// call Tina Cloud directly from SSR using the public client ID + token.
-	const endpoints = [
-		process.env.TINA_UPSTREAM_CONTENT_API_URL,
+	// Never let an inherited Passenger endpoint outrank this site's Tina project.
+	// The canonical destination endpoint is always first; optional configured
+	// endpoints are accepted only when they name the same client ID.
+	const direct = tinaDirectContentApiUrl();
+	const clientId = import.meta.env.NEXT_PUBLIC_TINA_CLIENT_ID || process.env.NEXT_PUBLIC_TINA_CLIENT_ID;
+	const configured = [
 		process.env.TINA_DIRECT_CONTENT_API_URL,
-		tinaDirectContentApiUrl(),
-	].filter(Boolean) as string[];
-	return Array.from(new Set(endpoints));
+		process.env.TINA_UPSTREAM_CONTENT_API_URL,
+	].filter((value): value is string => Boolean(value && clientId && value.includes(String(clientId))));
+	return Array.from(new Set([direct, ...configured].filter(Boolean) as string[]));
 }
 
 async function fetchGithubPageFrontmatter(relativePath: string) {
