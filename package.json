@@ -24,6 +24,8 @@
     "permalink:sync": "node scripts/sync-permalinks-to-filenames.mjs",
     "permalink:watch": "node scripts/watch-permalinks-to-filenames.mjs",
     "tina:fullcheck": "python3 scripts/tina-fullcheck.py",
+    "tina:fullcheck:failclosed-negative": "python3 scripts/test-tina-fullcheck-failclosed.py",
+    "tina:backend-public-check": "python3 scripts/tina-backend-public-check.py",
     "astro:demo-lock:preflight": "node scripts/validate-demo-lock-preflight.mjs",
     "astro:demo-lock:preflight:negative": "node scripts/test-demo-lock-preflight-negative.mjs",
     "astro:demo-lock": "node scripts/validate-demo-lock.mjs",
