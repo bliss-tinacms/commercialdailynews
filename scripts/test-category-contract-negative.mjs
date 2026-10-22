@@ -9,6 +9,7 @@ const validator = join(root, 'scripts/validate-category-contract.mjs');
 const fixtureFiles = [
   'src/lib/permalinks.ts',
   'src/lib/commercial-renderers.ts',
+  'src/lib/category-archive.mjs',
   'src/pages/[...slug].astro',
   'src/pages/category/[...slug].astro',
   'src/pages/blog/category/[...slug].astro',
@@ -87,6 +88,11 @@ const cases = [
     name: 'category-order-or-href-corrupted',
     expected: 'article-multicategory-renderer-missing:getCategoryPermalink(category)',
     apply: (fixture) => mutate(fixture, 'src/lib/commercial-renderers.ts', 'getCategoryPermalink(category)', 'getCategoryPermalink(categories[0])'),
+  },
+  {
+    name: 'category-filter-bypassed-before-pagination',
+    expected: 'category-archive-filter-before-pagination-missing:filterPostsByCategory(allPosts, categoryRouteSlug)',
+    apply: (fixture) => mutate(fixture, 'src/pages/[...slug].astro', 'filterPostsByCategory(allPosts, categoryRouteSlug)', 'allPosts.filter(() => true)'),
   },
   {
     name: 'destination-build-wiring-removed',

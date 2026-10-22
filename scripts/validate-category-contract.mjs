@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const argIndex = process.argv.indexOf('--root');
 const root = resolve(argIndex >= 0 ? process.argv[argIndex + 1] : new URL('..', import.meta.url).pathname);
@@ -51,6 +52,42 @@ if (catchall.includes("routeSlug === 'business-economy')") || catchall.includes(
   fail('business-economy-prefix-redirect-reintroduced');
 }
 if (/categoryRouteSlug[\s\S]{0,300}\/category\//.test(catchall)) fail('category-archive-prefix-reintroduced');
+for (const required of [
+  "filterPostsByCategory(allPosts, categoryRouteSlug)",
+  "paginateCategoryPosts(filteredCategoryPosts, categoryPage, perPage)",
+  "filteredCategoryPosts.length",
+]) {
+  if (!catchall.includes(required)) fail(`category-archive-filter-before-pagination-missing:${required}`);
+}
+if (catchall.includes('const categoryPosts = allPosts.slice(')) fail('category-archive-unfiltered-pagination-reintroduced');
+
+const categoryArchiveModule = join(root, 'src/lib/category-archive.mjs');
+if (!existsSync(categoryArchiveModule)) {
+  fail('missing:src/lib/category-archive.mjs');
+} else {
+  try {
+    const { filterPostsByCategory, paginateCategoryPosts, postCategorySlugs } = await import(`${pathToFileURL(categoryArchiveModule).href}?contract=${Date.now()}`);
+    const fixturePosts = [
+      { title: 'science-only', categories: ['src/content/category/science-technology.json'] },
+      { title: 'world-only', categories: [{ _sys: { filename: 'world-news' } }] },
+      { title: 'multi-category', categories: [{ category: 'src/content/category/science-technology.json' }, { _sys: { path: 'src/content/category/world-news.json' } }] },
+      { title: 'legacy-health', category: 'src/content/category/health.json' },
+    ];
+    const science = filterPostsByCategory(fixturePosts, 'science-technology');
+    const world = filterPostsByCategory(fixturePosts, { _sys: { filename: 'world-news' } });
+    if (science.map((post) => post.title).join('|') !== 'science-only|multi-category') fail('category-membership-science-fixture-failed');
+    if (world.map((post) => post.title).join('|') !== 'world-only|multi-category') fail('category-membership-world-fixture-failed');
+    if (postCategorySlugs(fixturePosts[3]).join('|') !== 'health') fail('category-membership-legacy-shape-failed');
+    if (paginateCategoryPosts(science, 2, 1).map((post) => post.title).join('|') !== 'multi-category') fail('category-filter-before-pagination-fixture-failed');
+    if (filterPostsByCategory(fixturePosts, 'empty-category').length !== 0) fail('category-empty-state-input-fixture-failed');
+  } catch (error) {
+    fail(`category-membership-module-error:${error.message}`);
+  }
+}
+
+for (const required of ['data-empty-post-list="true"', 'No published posts yet.', 'else card.remove()', 'const totalPages = Math.ceil(totalPosts / perPage)']) {
+  if (!renderer.includes(required)) fail(`category-renderer-filtered-state-missing:${required}`);
+}
 
 const legacy = read('src/pages/category/[...slug].astro');
 if (!legacy.includes('Astro.redirect(`/${slug}/`, 301)')) fail('legacy-category-route-does-not-redirect-prefix-free');

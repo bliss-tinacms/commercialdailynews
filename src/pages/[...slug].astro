@@ -1,5 +1,6 @@
 ---
 import { getBlogPermalink, getBlogRouteSlug, getPageRouteSlug } from '../lib/permalinks';
+import { filterPostsByCategory, paginateCategoryPosts } from '../lib/category-archive.mjs';
 import { getBlog, getCategory, getEditableBlog, getEditableCategory, getEditableGlobalChrome, getEditablePage, getGlobalChrome, getPublicPage, getUser, listBlogs, listCategories, listPages, listUsers } from '../lib/data';
 import { referenceSlug, renderAuthority } from '../lib/demo-authority';
 import { mutateAbout, mutateArticle, mutateCategory, mutateContact, mutateGenericPage, mutateTeam, sortNewsroom } from '../lib/commercial-renderers';
@@ -56,7 +57,8 @@ if (categoryEntry) {
   const documentSlug = categoryEntry?._sys?.filename || categoryRouteSlug;
   const category: any = (await (editing ? getEditableCategory(documentSlug) : getCategory(documentSlug))).data?.category || categoryEntry;
   const allPosts = await listBlogs();
-  const categoryPosts = allPosts.slice((categoryPage - 1) * perPage, categoryPage * perPage);
+  const filteredCategoryPosts = filterPostsByCategory(allPosts, categoryRouteSlug);
+  const categoryPosts = paginateCategoryPosts(filteredCategoryPosts, categoryPage, perPage);
   const seo = category.seo || {};
   const canonical = categoryPage > 1 ? `/${categoryRouteSlug}/page/${categoryPage}/` : `/${categoryRouteSlug}/`;
   return renderAuthority({
@@ -72,7 +74,7 @@ if (categoryEntry) {
       noindex: seo.noindex,
       nofollow: seo.nofollow,
     },
-    mutate: ($) => mutateCategory($, category, categoryPosts, categoryPage, allPosts.length, perPage),
+    mutate: ($) => mutateCategory($, category, categoryPosts, categoryPage, filteredCategoryPosts.length, perPage),
   });
 }
 

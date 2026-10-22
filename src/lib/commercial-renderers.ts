@@ -226,21 +226,33 @@ function setFeatured($: cheerio.CheerioAPI, featured: cheerio.Cheerio<any>, post
   const date = featured.find('span').filter((_i, node) => /Oct\s+\d|\d{4}/.test($(node).text())).last();
   if (date.length) date.text(formatDate(post?.pubDate, 'short'));
 }
-function paginate($: cheerio.CheerioAPI, nav: cheerio.Cheerio<any>, base: string, currentPage: number, _totalPosts: number, _perPage: number) {
+function paginate($: cheerio.CheerioAPI, nav: cheerio.Cheerio<any>, base: string, currentPage: number, totalPosts: number, perPage: number) {
   if (!nav.length) return;
+  const totalPages = Math.ceil(totalPosts / perPage);
+  if (totalPages <= 1) {
+    nav.remove();
+    return;
+  }
   // Do not rebuild the authority pager: its node count, spacing, and inline
   // styles are part of the immutable supplied demo. Only make its existing
-  // controls functional.
+  // controls functional and remove controls that do not represent a real page.
   const links = nav.children('a').toArray();
   const numbered = links.slice(0, -1);
   numbered.forEach((node, index) => {
     const page = index + 1;
-    const link = $(node).text(String(page)).attr('href', page === 1 ? `${base}/` : `${base}/page/${page}/`).attr('aria-label', `Page ${page}`);
+    const link = $(node);
+    if (page > totalPages) {
+      link.remove();
+      return;
+    }
+    link.text(String(page)).attr('href', page === 1 ? `${base}/` : `${base}/page/${page}/`).attr('aria-label', `Page ${page}`);
     if (page === currentPage) link.attr('aria-current', 'page');
     else link.removeAttr('aria-current');
   });
   if (links.length) {
-    $(links[links.length - 1])
+    const next = $(links[links.length - 1]);
+    if (currentPage >= totalPages) next.remove();
+    else next
       .text('Next →')
       .attr('href', `${base}/page/${currentPage + 1}/`)
       .attr('aria-label', 'Next page')
@@ -250,10 +262,16 @@ function paginate($: cheerio.CheerioAPI, nav: cheerio.Cheerio<any>, base: string
 
 export function mutateCategory($: cheerio.CheerioAPI, category: any, posts: any[], currentPage = 1, totalPosts = posts.length, perPage = 7) {
   setText($, '[data-dc-tpl="44"]', category?.title);
+  $('[data-empty-post-list]').remove();
   const featured = $('[data-dc-tpl="46"]').first();
   if (posts[0]) setFeatured($, featured, posts[0], true);
+  else featured.replaceWith('<p data-empty-post-list="true" role="status" style="margin:48px 0 72px;font-size:18px;line-height:1.6;color:#475569">No published posts yet.</p>');
   const selectors = ['59', '67', '75', '83', '91', '99'];
-  selectors.forEach((id, index) => { const card = $(`[data-dc-tpl="${id}"]`).first(); if (posts[index + 1]) setPostCard($, card, posts[index + 1], true); });
+  selectors.forEach((id, index) => {
+    const card = $(`[data-dc-tpl="${id}"]`).first();
+    if (posts[index + 1]) setPostCard($, card, posts[index + 1], true);
+    else card.remove();
+  });
   paginate($, $('[data-dc-tpl="107"]').first(), `/${referenceSlug(category)}`, currentPage, totalPosts, perPage);
 }
 
