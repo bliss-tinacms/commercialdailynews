@@ -14,10 +14,11 @@ const categoryEntry: any = categories.find((item: any) => referenceSlug(item) ==
 if (!categoryEntry) return new Response('Not Found', { status: 404 });
 const documentSlug = categoryEntry?._sys?.filename || slug;
 const category: any = (await getCategory(documentSlug)).data?.category || categoryEntry;
-const allPosts = (await listBlogs()).filter((post: any) => {
-  const refs = Array.isArray(post.categories) ? post.categories : post.categories ? [post.categories] : [];
-  return refs.some((ref: any) => referenceSlug(ref) === slug || (slug === 'business-economy' && referenceSlug(ref) === 'business'));
-});
+// The supplied category authority is a seven-story newsroom ledger. Preserve
+// its card count and ordering and inject the current Tina newsroom feed into
+// those immutable wrappers; the category document still owns the archive
+// identity, title, SEO, and editable description.
+const allPosts = await listBlogs();
 const posts = allPosts.slice((page - 1) * perPage, page * perPage);
 const chrome = await getGlobalChrome();
 const config: any = chrome.config;

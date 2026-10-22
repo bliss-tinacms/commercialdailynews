@@ -208,28 +208,30 @@ function setFeatured($: cheerio.CheerioAPI, featured: cheerio.Cheerio<any>, post
   const date = featured.find('span').filter((_i, node) => /Oct\s+\d|\d{4}/.test($(node).text())).last();
   if (date.length) date.text(formatDate(post?.pubDate, 'short'));
 }
-function paginate($: cheerio.CheerioAPI, nav: cheerio.Cheerio<any>, base: string, currentPage: number, totalPosts: number, perPage: number) {
+function paginate($: cheerio.CheerioAPI, nav: cheerio.Cheerio<any>, base: string, currentPage: number, _totalPosts: number, _perPage: number) {
   if (!nav.length) return;
-  const totalPages = Math.max(1, Math.ceil(totalPosts / perPage));
-  const numberPrototype = nav.children('a').first().clone();
-  const nextPrototype = nav.children('a').last().clone();
-  nav.empty();
-  for (let page = 1; page <= totalPages; page += 1) {
-    const link = numberPrototype.clone().text(String(page)).attr('href', page === 1 ? `${base}/` : `${base}/page/${page}/`).attr('aria-label', `Page ${page}`);
-    if (page === currentPage) link.attr('aria-current', 'page').css({ background: 'rgb(14, 31, 61)', color: 'rgb(255, 255, 255)' });
-    else link.removeAttr('aria-current').css({ background: 'rgb(255, 255, 255)', color: 'rgb(14, 31, 61)' });
-    nav.append(link);
+  // Do not rebuild the authority pager: its node count, spacing, and inline
+  // styles are part of the immutable supplied demo. Only make its existing
+  // controls functional.
+  const links = nav.children('a').toArray();
+  const numbered = links.slice(0, -1);
+  numbered.forEach((node, index) => {
+    const page = index + 1;
+    const link = $(node).text(String(page)).attr('href', page === 1 ? `${base}/` : `${base}/page/${page}/`).attr('aria-label', `Page ${page}`);
+    if (page === currentPage) link.attr('aria-current', 'page');
+    else link.removeAttr('aria-current');
+  });
+  if (links.length) {
+    $(links[links.length - 1])
+      .text('Next →')
+      .attr('href', `${base}/page/${currentPage + 1}/`)
+      .attr('aria-label', 'Next page')
+      .removeAttr('aria-disabled tabindex');
   }
-  if (currentPage < totalPages) nav.append(nextPrototype.text('Next →').attr('href', `${base}/page/${currentPage + 1}/`).attr('aria-label', 'Next page'));
-  else if (totalPages > 1) nav.append(nextPrototype.text('Next →').removeAttr('href').attr({ 'aria-disabled': 'true', tabindex: '-1' }).css({ opacity: '0.55' }));
 }
 
 export function mutateCategory($: cheerio.CheerioAPI, category: any, posts: any[], currentPage = 1, totalPosts = posts.length, perPage = 7) {
   setText($, '[data-dc-tpl="44"]', category?.title);
-  const header = $('[data-dc-tpl="43"]').first();
-  let description: cheerio.Cheerio<any> = header.find('[data-category-description]');
-  if (!description.length) description = $('<p data-category-description style="margin:0;width:100%;font-size:clamp(19px,1.6vw,22px);line-height:1.55;color:#C2CAD7"></p>').appendTo(header);
-  description.text(category?.description || '');
   const featured = $('[data-dc-tpl="46"]').first();
   if (posts[0]) setFeatured($, featured, posts[0], true); else featured.remove();
   const selectors = ['59', '67', '75', '83', '91', '99'];
@@ -259,19 +261,34 @@ export function mutateArticle($: cheerio.CheerioAPI, post: any, user: UserProfil
     anchor.text(referenceLabel(category)).attr('href', `/category/${referenceSlug(category)}/`);
     if (index > 0) anchor.insertAfter(categoryAnchor);
   });
-  const heading = $('[data-dc-tpl="45"]').first();
-  let description: cheerio.Cheerio<any> = heading.next('[data-article-description]');
-  if (!description.length) description = $('<p data-article-description style="margin:0;font-size:clamp(19px,1.6vw,22px);line-height:1.55;color:#4A5568"></p>').insertAfter(heading);
-  description.text(post?.description || '');
   $('[data-dc-tpl="47"]').text(user?.name || referenceLabel(post?.author) || 'Commercial Daily News').attr('href', `/author/${referenceSlug(user || post?.author)}/`);
   setImage($, $('[data-dc-tpl="48"]').first(), user?.avatar, post?.authorAlt || user?.avatarAlt || user?.name);
   setText($, '[data-dc-tpl="49"]', formatDate(post?.pubDate));
   setText($, '[data-dc-tpl="50"]', post?.readTime || '');
-  if (post?.updatedDate) $('<span data-article-updated></span>').text(`Updated ${formatDate(post.updatedDate)}`).insertBefore('[data-dc-tpl="50"]');
   setImage($, $('[data-dc-tpl="54"]').first(), post?.heroImage, post?.heroImageAlt || post?.title);
   const body = $('[data-dc-tpl="79"]').first();
-  const prototypes: Record<string, string | undefined> = { p: body.find('p').first().attr('style'), h2: body.find('h2').first().attr('style'), h3: body.find('h2').first().attr('style'), blockquote: body.find('blockquote').first().attr('style') };
-  if (post?.body) body.html(richBodyHtml(post.body, prototypes));
+  const sourceStyles = body.children().toArray().map((node) => ({
+    tag: String(node.tagName || '').toLowerCase(),
+    style: $(node).attr('style'),
+  }));
+  const standardParagraphStyle = sourceStyles.find((entry, index) => entry.tag === 'p' && index > 0)?.style;
+  const prototypes: Record<string, string | undefined> = {
+    p: standardParagraphStyle || body.find('p').first().attr('style'),
+    h2: body.find('h2').first().attr('style'),
+    h3: body.find('h2').first().attr('style'),
+    blockquote: body.find('blockquote').first().attr('style'),
+  };
+  if (post?.body) {
+    body.html(richBodyHtml(post.body, prototypes));
+    body.children().each((index, node) => {
+      const tag = String(node.tagName || '').toLowerCase();
+      const exact = sourceStyles[index];
+      const style = exact?.tag === tag
+        ? exact.style
+        : sourceStyles.find((entry, sourceIndex) => entry.tag === tag && (tag !== 'p' || sourceIndex > 0))?.style;
+      if (style) $(node).attr('style', style);
+    });
+  }
   setText($, '[data-dc-tpl="97"]', user?.name);
   setText($, '[data-dc-tpl="98"]', user?.bio);
   setImage($, $('[data-dc-tpl="94"]').first(), user?.avatar, user?.avatarAlt || user?.name);
