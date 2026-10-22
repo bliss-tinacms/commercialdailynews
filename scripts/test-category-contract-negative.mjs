@@ -13,6 +13,7 @@ const fixtureFiles = [
   'src/pages/category/[...slug].astro',
   'src/pages/blog/category/[...slug].astro',
   'tina/collections/category.ts',
+  'package.json',
 ];
 const fixtureDirs = ['src/content/navigation', 'src/content/category'];
 
@@ -42,34 +43,54 @@ if (positive.status !== 0 || !positive.stdout.includes('CATEGORY_CONTRACT_PASS')
 
 const cases = [
   {
-    name: 'category-prefix-in-helper',
+    name: 'prefix-permalink-helper',
     expected: 'category-permalink-not-prefix-free',
     apply: (fixture) => mutate(fixture, 'src/lib/permalinks.ts', 'return slug ? "/" + slug + "/" : "/";', 'return slug ? "/category/" + slug + "/" : "/category/";'),
   },
   {
-    name: 'category-prefix-in-tina-router',
+    name: 'prefix-tina-router',
     expected: 'tina-category-router-not-prefix-free',
     apply: (fixture) => mutate(fixture, 'tina/collections/category.ts', 'return `/${String(document._sys.filename', 'return `/category/${String(document._sys.filename'),
   },
   {
-    name: 'secondary-categories-dropped',
-    expected: 'article-multicategory-renderer-missing:categories.slice(1).forEach',
-    apply: (fixture) => mutate(fixture, 'src/lib/commercial-renderers.ts', 'categories.slice(1).forEach', 'categories.slice(1, 1).forEach'),
+    name: 'prefix-archive-route',
+    expected: 'category-archive-prefix-reintroduced',
+    apply: (fixture) => mutate(fixture, 'src/pages/[...slug].astro', 'categoryPage > 1 ? `/${categoryRouteSlug}/page/${categoryPage}/` : `/${categoryRouteSlug}/`', 'categoryPage > 1 ? `/category/${categoryRouteSlug}/page/${categoryPage}/` : `/category/${categoryRouteSlug}/`'),
   },
   {
-    name: 'prefix-free-route-dispatch-removed',
-    expected: 'prefix-free-category-route-missing:const categoryDocuments',
-    apply: (fixture) => mutate(fixture, 'src/pages/[...slug].astro', 'const categoryDocuments', 'const removedCategoryDocuments'),
-  },
-  {
-    name: 'navigation-prefix-reintroduced',
+    name: 'prefix-navigation-or-generated-link',
     expected: 'navigation-category-prefix:',
     apply: (fixture) => mutate(fixture, 'src/content/navigation/header.json', '"href": "/business-economy/"', '"href": "/category/business-economy/"'),
   },
   {
-    name: 'category-canonical-prefix-reintroduced',
+    name: 'prefix-canonical-or-sitemap',
     expected: 'category-canonical-prefix:',
     apply: (fixture) => mutate(fixture, 'src/content/category/business-economy.json', '"canonicalUrl": "/business-economy/"', '"canonicalUrl": "/category/business-economy/"'),
+  },
+  {
+    name: 'legacy-alias-not-301',
+    expected: 'legacy-category-route-does-not-redirect-prefix-free',
+    apply: (fixture) => mutate(fixture, 'src/pages/category/[...slug].astro', 'Astro.redirect(`/${slug}/`, 301)', 'Astro.redirect(`/${slug}/`, 302)'),
+  },
+  {
+    name: 'first-category-only',
+    expected: 'article-multicategory-renderer-missing:categories.slice(1).forEach',
+    apply: (fixture) => mutate(fixture, 'src/lib/commercial-renderers.ts', 'categories.slice(1).forEach', 'categories.slice(0, 0).forEach'),
+  },
+  {
+    name: 'secondary-category-dropped',
+    expected: 'article-multicategory-renderer-missing:categories.slice(1).forEach',
+    apply: (fixture) => mutate(fixture, 'src/lib/commercial-renderers.ts', 'categories.slice(1).forEach', 'categories.slice(1, 1).forEach'),
+  },
+  {
+    name: 'category-order-or-href-corrupted',
+    expected: 'article-multicategory-renderer-missing:getCategoryPermalink(category)',
+    apply: (fixture) => mutate(fixture, 'src/lib/commercial-renderers.ts', 'getCategoryPermalink(category)', 'getCategoryPermalink(categories[0])'),
+  },
+  {
+    name: 'destination-build-wiring-removed',
+    expected: 'category-package-command-invalid:category:contract',
+    apply: (fixture) => mutate(fixture, 'package.json', 'node scripts/validate-category-contract.mjs', 'node -e \\"process.exit(0)\\"'),
   },
 ];
 
@@ -81,7 +102,7 @@ for (const testCase of cases) {
     const run = spawnSync(process.execPath, [validator, '--root', fixture], { encoding: 'utf8' });
     const output = run.stdout + run.stderr;
     const passed = run.status !== 0 && output.includes(testCase.expected);
-    results.push({ name: testCase.name, expected: testCase.expected, exitCode: run.status, passed });
+    results.push({ id: testCase.name, expected: testCase.expected, exitCode: run.status, passed });
     if (!passed) process.stderr.write(`NEGATIVE_CASE_FAIL ${testCase.name}\n${output}`);
   } finally {
     rmSync(fixture, { recursive: true, force: true });
@@ -89,6 +110,6 @@ for (const testCase of cases) {
 }
 
 const failures = results.filter((result) => !result.passed);
-console.log(JSON.stringify({ schema: 'commercial-category-contract-negative-v1', status: failures.length ? 'FAIL' : 'PASS', results }, null, 2));
+console.log(JSON.stringify({ schema: 'commercial-category-contract-negative-v2', status: failures.length ? 'FAIL' : 'PASS', results }, null, 2));
 if (failures.length) process.exit(1);
 console.log(`CATEGORY_CONTRACT_NEGATIVE_PASS ${results.length}`);

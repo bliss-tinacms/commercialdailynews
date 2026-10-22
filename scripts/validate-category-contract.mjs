@@ -50,6 +50,7 @@ for (const required of ['const categoryDocuments', "family: 'category'", 'getEdi
 if (catchall.includes("routeSlug === 'business-economy')") || catchall.includes("'/category/business-economy/'")) {
   fail('business-economy-prefix-redirect-reintroduced');
 }
+if (/categoryRouteSlug[\s\S]{0,300}\/category\//.test(catchall)) fail('category-archive-prefix-reintroduced');
 
 const legacy = read('src/pages/category/[...slug].astro');
 if (!legacy.includes('Astro.redirect(`/${slug}/`, 301)')) fail('legacy-category-route-does-not-redirect-prefix-free');
@@ -63,6 +64,27 @@ for (const path of walkFiles('src/content/navigation')) {
 for (const path of walkFiles('src/content/category')) {
   const text = readFileSync(path, 'utf8');
   if (/"canonicalUrl"\s*:\s*"\/category\//.test(text)) fail(`category-canonical-prefix:${path.slice(root.length + 1)}`);
+}
+
+const packageJson = read('package.json');
+if (packageJson) {
+  let pkg;
+  try { pkg = JSON.parse(packageJson); } catch { fail('package-json-invalid'); }
+  const scripts = pkg?.scripts ?? {};
+  const expectedScripts = {
+    'category:contract': 'node scripts/validate-category-contract.mjs',
+    'category:contract:negative': 'node scripts/test-category-contract-negative.mjs',
+  };
+  for (const [name, command] of Object.entries(expectedScripts)) {
+    if (scripts[name] !== command) fail(`category-package-command-invalid:${name}`);
+  }
+  for (const name of ['validate:starter', 'validate:site']) {
+    if (!String(scripts[name] ?? '').includes('category:contract')) fail(`category-package-wiring-missing:${name}`);
+  }
+  for (const name of ['build', 'build:local']) {
+    const command = String(scripts[name] ?? '');
+    if (!command.includes('validate:site') && !command.includes('validate:starter')) fail(`category-package-wiring-missing:${name}`);
+  }
 }
 
 const result = {
