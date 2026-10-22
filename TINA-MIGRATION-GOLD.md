@@ -112,6 +112,10 @@ The repository validator and regression suite must require this section, the `ru
 - Never create a replacement account, project, repository, API key, token, form, media folder, or deployment target merely because the first/default selection is empty. Use the provided resources and verify their identity and permissions first.
 - Record positive evidence for each identity contract: exact organization, project/client ID, connected repository, branch, and successful authorized query. If evidence conflicts, stop and reconcile it instead of guessing.
 
+#### 5.0A. NON-OVERRIDABLE-IDENTITY-EVIDENCE
+
+Before any migration command, implementation, deployment or status classification, run `pnpm tina:identity-preflight` and `pnpm tina:identity-preflight:negative`. The checked artifact must prove that the tracker, preserved user evidence, organization switcher and durable project metadata were reviewed; that `bliss-tinacms's Organization` was selected; and that organization/project/client/repository/Site URL evidence is preserved. Positive identity evidence is monotonic: context compaction, missing transcript output, absent local credentials, an incomplete lookup, `401` or `403` cannot downgrade it to missing, nonexistent, wrong-organization or `BLOCKED`. Only the access operation may become `AUTH_BLOCKED`. If current reasoning conflicts with the rule or preserved evidence, stop immediately; the rule/evidence wins and no migration work may resume until the status is corrected. The negative suite must prove simulated `401`, `403`, transcript loss and context compaction cannot downgrade identity, while a downgrade attempt, wrong organization or waived conflict check is rejected.
+
 - Construct the direct Tina content endpoint from the verified destination client ID and branch.
 - For server-side/public reads, prioritize that verified endpoint ahead of inherited `TINA_UPSTREAM_CONTENT_API_URL` or `TINA_DIRECT_CONTENT_API_URL` values.
 - Require returned Global Config/site identity to match the destination before Cloud data can override repository fallback.
@@ -252,6 +256,7 @@ These gates permanently encode failures discovered during real migrations. They 
 42. **CATEGORY-ISLAND-EDITABILITY.** Category islands inherit the Author island contract: HTTP success and rendered fallback are insufficient. Require exactly one stable form, a substantial generated query, exact relative-path variables, authoritative collection data and one intended primary form on every canonical/alias route.
 43. **REPRESENTATION-SHAPE-MATRIX.** For every Cloud-capable body, execute object-rich-text, repository-string, absent-body and fallback-content cases through the same stable wrapper contract. Require positive DOM/style assertions for each supported shape plus a controlled negative that removes or relocates the wrapper.
 44. **MANDATORY-RELEASE-COMMAND-SEQUENCE.** The release sequence must execute, in order, starter/runtime validation, route and alias tests, production build/start, Tina fullcheck, demo-lock preflight, positive demo lock, controlled-negative demo lock, responsive-menu positive and negative gates, the unscoped full Publisher gate, post-Publisher fetch/inspection, exact final-tip rebuild/deploy, read-only live rechecks and post-cleanup acceptance. Validator-enforced command wiring is required; prose-only commands do not pass.
+45. **NON-OVERRIDABLE-IDENTITY-EVIDENCE.** Preserved tracker/user evidence of Tina organization/project/client/repository/Site URL identity cannot be downgraded by context loss, failed lookups, missing local credentials, `401` or `403`. Run the machine-readable positive and controlled-negative identity preflight before any migration command or status claim. A rules/evidence conflict is an immediate hard stop; reasoning cannot waive the gate.
 
 The repository validator must require every named marker above. Applicable rules must also be implemented in the executable build, demo-lock, admin/fullcheck, deploy, and cleanup scripts; documentation presence by itself is not release acceptance.
 
@@ -326,6 +331,7 @@ This is the explicit postmortem required by the latest migration. It is not a su
 | HNT-063 | TINA-FULLCHECK could remain green while silently omitting a configured collection from its test map. | Compared schema-derived configured collections to explicit tested collections and added an omission-negative that must fail. | Collection coverage equality and its deliberate omission test are mandatory release evidence. | Resume Interrupted Operation fullcheck evidence |
 | HNT-064 | One combined multi-file remediation patch failed atomically because an unrelated documentation hunk did not match, so none of the valid code hunks were applied. | Reapplied the changes as small, independently verifiable replacements. | Use atomic multi-file patches only when every hunk is pre-read and exact; otherwise patch and validate files independently. | Resume Interrupted Operation patch evidence |
 | HNT-065 | Font paths and files were non-authoritative, allowing fallback typography to conceal template differences. | Self-hosted the exact Plus Jakarta Sans assets at stable production paths with the required weight and unicode declarations. | Pin and checksum visual-reference fonts, wait for font loading and fail on computed family or metric drift. | `ca65df7` |
+| HNT-066 | Proven Tina organization/project evidence was later downgraded after context loss and an access failure, despite the written rule. | Stopped migration work, preserved the positive evidence, separated `AUTH_BLOCKED` from project existence and added a machine-readable identity preflight plus controlled negatives. | `NON-OVERRIDABLE-IDENTITY-EVIDENCE`; rules and preserved evidence outrank inference, and no migration command runs until positive/negative preflight passes. | Global core hardening and repository identity-preflight execution |
 
 The ledger is append-only for discovered migration failures. A row may be superseded only by a stricter row that names the superseded ID; silent deletion, collapsing several incidents into an unnamed generality, or retaining prevention without the problem and solution is forbidden.
 
@@ -350,6 +356,8 @@ The repository validator must reject at minimum:
 
 ```sh
 pnpm install --frozen-lockfile
+pnpm tina:identity-preflight
+pnpm tina:identity-preflight:negative
 pnpm validate:starter
 pnpm build:local
 pnpm astro check

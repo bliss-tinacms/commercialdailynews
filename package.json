@@ -14,6 +14,8 @@
     "site:provision": "node scripts/provision-site.mjs",
     "runtime:install": "node scripts/install-runtime-env.mjs",
     "runtime:test": "node scripts/test-runtime-env.mjs",
+    "tina:identity-preflight": "node scripts/validate-tina-identity-preflight.mjs",
+    "tina:identity-preflight:negative": "node scripts/test-tina-identity-preflight-negative.mjs",
     "validate:starter": "node scripts/validate-starter.mjs && pnpm runtime:test",
     "validate:site": "node scripts/validate-starter.mjs --runtime",
     "build:search": "tinacms search-index",

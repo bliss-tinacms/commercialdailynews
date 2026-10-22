@@ -1,0 +1,16 @@
+{
+  "schema": "tina-identity-preflight-v1",
+  "tracker_checked": true,
+  "saved_evidence_checked": true,
+  "organization_switcher_checked": true,
+  "positive_identity_preserved": true,
+  "auth_separated_from_existence": true,
+  "rules_conflict_check": true,
+  "organization": "bliss-tinacms's Organization",
+  "project": "commercialdailynews",
+  "repository": "bliss-tinacms/commercialdailynews",
+  "site_url": "https://www.commercialdailynews.com",
+  "client_identity": "verified-from-preserved-user-evidence-and-protected-runtime-config",
+  "identity_status": "PASS",
+  "access_status": "SEPARATE_CHECK"
+}

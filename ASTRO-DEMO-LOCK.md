@@ -43,10 +43,11 @@ A build, SHA, `RELEASE_COMMIT`, HTTP `200`, screenshot taken at the wrong viewpo
 34. **CATEGORY-ISLAND-EDITABILITY** — Category islands require the same real-query, exact-variable, authoritative-data, stable-form and primary-form proof as Author islands.
 35. **REPRESENTATION-SHAPE-MATRIX** — Prove object-rich-text, string, absent and fallback body representations preserve one DOM/style wrapper; include a wrapper-removal controlled negative.
 36. **MANDATORY-RELEASE-COMMAND-SEQUENCE** — Validators must require and the release must execute preflight, positive/negative lock, responsive positive/negative, complete Publisher, post-Publisher lineage rebuild, live recheck and post-cleanup acceptance in order.
+37. **NON-OVERRIDABLE-IDENTITY-EVIDENCE** — Preserved tracker/user evidence of organization, project, client, repository and Site URL remains authoritative across context loss, failed lookups and `401`/`403`. Access may be `AUTH_BLOCKED`; proven identity may not be downgraded. A rules/evidence conflict stops the migration before any command, and the positive plus controlled-negative identity preflight is mandatory.
 
 ## Transport gates inherited from GOLD
 
-`AUTHENTICATED-GIT-PREFLIGHT`, `PROJECT-SECRET-MAP`, `CPANEL-ENDPOINT-NORMALIZATION` and `CPANEL-RESPONSE-NORMALIZATION` remain transport controls in `TINA-MIGRATION-GOLD.md`. If any prevents live proof, this lock is `BLOCKED`.
+`AUTHENTICATED-GIT-PREFLIGHT`, `PROJECT-SECRET-MAP`, `CPANEL-ENDPOINT-NORMALIZATION`, `CPANEL-RESPONSE-NORMALIZATION` and `NON-OVERRIDABLE-IDENTITY-EVIDENCE` remain inherited controls in `TINA-MIGRATION-GOLD.md`. If any prevents live proof, this lock is `BLOCKED`.
 
 ## LATEST-MIGRATION-INCIDENT-LEDGER — Herald News Today
 
@@ -119,6 +120,7 @@ The complete `HNT-001` through `HNT-054` problem → solution → prevention →
 | HNT-063 | Fullcheck could omit a configured collection and stay green. | Enforced schema/test-map equality and omission-negative failure. | Coverage equality plus negative proof. | Resume session |
 | HNT-064 | One mismatched doc hunk cancelled valid code hunks in a combined patch. | Reapplied small independently verified patches. | Multi-file atomic patches require exact pre-read hunks. | Resume session |
 | HNT-065 | Non-authoritative fonts allowed fallback typography. | Self-hosted exact Plus Jakarta Sans assets. | Pinned/checksummed fonts plus computed-metric proof. | `ca65df7` |
+| HNT-066 | Proven Tina identity was downgraded after context loss/access failure despite policy. | Preserved positive evidence and separated access from existence. | Machine-readable positive/negative identity preflight; rule/evidence conflict is a hard stop. | Global core and repository preflight |
 
 This ledger is append-only under the same supersession rule as GOLD. Documentation presence alone still does not pass any row.
 

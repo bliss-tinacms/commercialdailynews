@@ -25,8 +25,9 @@ const requiredControls = [
   'RESPONSIVE-NAVIGATION-INTERACTION-CONTRACT', 'FRONTEND-ROUTE-RESOLUTION', 'CANONICAL-ALIAS-PARITY',
   'DETERMINISTIC-ADMIN-LOCATORS', 'CATEGORY-ISLAND-EDITABILITY', 'REPRESENTATION-SHAPE-MATRIX',
   'MANDATORY-RELEASE-COMMAND-SEQUENCE',
+  'NON-OVERRIDABLE-IDENTITY-EVIDENCE',
 ];
-const incidentIds = Array.from({ length: 65 }, (_, index) => `HNT-${String(index + 1).padStart(3, '0')}`);
+const incidentIds = Array.from({ length: 66 }, (_, index) => `HNT-${String(index + 1).padStart(3, '0')}`);
 const missing = [];
 const failures = [];
 const passes = [];

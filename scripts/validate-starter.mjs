@@ -7,7 +7,7 @@ const strictRuntime = process.argv.includes('--runtime');
 const failures = [];
 const fail = (message) => failures.push(message);
 const read = (path) => readFileSync(join(root, path), 'utf8');
-const incidentIds = Array.from({ length: 65 }, (_, index) => `HNT-${String(index + 1).padStart(3, '0')}`);
+const incidentIds = Array.from({ length: 66 }, (_, index) => `HNT-${String(index + 1).padStart(3, '0')}`);
 
 function validateIncidentLedger(document, label) {
   if (!document.includes('LATEST-MIGRATION-INCIDENT-LEDGER')) fail(`${label} is missing the latest-migration incident ledger.`);
@@ -126,6 +126,9 @@ if (!existsSync(join(root, 'scripts/tina-build-safe.mjs'))) fail('scripts/tina-b
 if (!existsSync(join(root, 'scripts/sanitize-generated-client.mjs'))) fail('scripts/sanitize-generated-client.mjs is required to keep generated credentials out of source control.');
 if (!existsSync(join(root, 'scripts/validate-demo-lock-preflight.mjs'))) fail('scripts/validate-demo-lock-preflight.mjs is required for fail-closed ASTRO-DEMO-LOCK readiness.');
 if (!existsSync(join(root, 'scripts/test-demo-lock-preflight-negative.mjs'))) fail('scripts/test-demo-lock-preflight-negative.mjs is required to prove ASTRO-DEMO-LOCK preflight rejection.');
+if (!existsSync(join(root, 'scripts/validate-tina-identity-preflight.mjs'))) fail('scripts/validate-tina-identity-preflight.mjs is required for non-overridable Tina identity evidence.');
+if (!existsSync(join(root, 'scripts/test-tina-identity-preflight-negative.mjs'))) fail('scripts/test-tina-identity-preflight-negative.mjs is required to prove identity downgrade rejection.');
+if (!existsSync(join(root, 'migration/identity-preflight.json'))) fail('migration/identity-preflight.json is required before migration work.');
 if (!existsSync(join(root, 'TINA-MIGRATION-GOLD.md'))) fail('TINA-MIGRATION-GOLD.md is required as the canonical migration and acceptance process.');
 else {
   const processDocument = read('TINA-MIGRATION-GOLD.md');
@@ -202,6 +205,9 @@ else {
     ['CATEGORY-ISLAND-EDITABILITY', 'category island editability gate'],
     ['REPRESENTATION-SHAPE-MATRIX', 'production representation-shape matrix gate'],
     ['MANDATORY-RELEASE-COMMAND-SEQUENCE', 'mandatory release command sequence gate'],
+    ['NON-OVERRIDABLE-IDENTITY-EVIDENCE', 'non-overridable Tina identity evidence gate'],
+    ['pnpm tina:identity-preflight', 'machine-readable Tina identity preflight command'],
+    ['pnpm tina:identity-preflight:negative', 'controlled-negative Tina identity preflight command'],
   ];
   for (const [needle, label] of requiredGates) {
     if (!processDocument.includes(needle)) fail(`TINA-MIGRATION-GOLD.md is missing the ${label}.`);
@@ -225,6 +231,7 @@ else {
     'RESPONSIVE-NAVIGATION-INTERACTION-CONTRACT', 'FRONTEND-ROUTE-RESOLUTION',
     'CANONICAL-ALIAS-PARITY', 'DETERMINISTIC-ADMIN-LOCATORS', 'CATEGORY-ISLAND-EDITABILITY',
     'REPRESENTATION-SHAPE-MATRIX', 'MANDATORY-RELEASE-COMMAND-SEQUENCE',
+    'NON-OVERRIDABLE-IDENTITY-EVIDENCE',
   ];
   for (const marker of requiredDemoControls) {
     if (!demoLock.includes(marker)) fail(`ASTRO-DEMO-LOCK.md is missing mandatory control ${marker}.`);
@@ -268,7 +275,7 @@ for (const marker of ['duplicate-manifest-path', 'non-normalized-manifest-path',
 for (const mutation of ['duplicate-manifest-path', 'non-normalized-manifest-path', 'fixture-hash-drift', 'unmanifested-fixture', 'fixture-symlink']) {
   if (!demoLockPreflightNegative.includes(mutation)) fail(`ASTRO-DEMO-LOCK negative suite is missing fixture-integrity mutation ${mutation}.`);
 }
-for (const marker of ['LATEST-MIGRATION-INCIDENT-LEDGER', 'missing-incident-ledger-row', 'length: 65']) {
+for (const marker of ['LATEST-MIGRATION-INCIDENT-LEDGER', 'missing-incident-ledger-row', 'length: 66']) {
   if (!demoLockPreflight.includes(marker)) fail(`ASTRO-DEMO-LOCK preflight is missing incident-ledger enforcement marker ${marker}.`);
 }
 if (!demoLockPreflightNegative.includes('missing-incident-ledger-row')) fail('ASTRO-DEMO-LOCK negative suite is missing the incident-ledger row-removal mutation.');
